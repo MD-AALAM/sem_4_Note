@@ -1,0 +1,123 @@
+🔷 Migrations in Django
+🔶 What are Migrations?
+
+👉 Migrations are used to:
+
+📌 Apply changes from your models to the database
+
+🔷 Simple Definition (Exam Point)
+
+Migration is a process of converting model changes into database structure.
+
+🔷 1. Why Migrations Needed?
+
+When you write a model:
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+
+
+👉 This is just Python code ❗
+👉 Database doesn’t know about it yet ❗
+
+👉 So we use migrations to sync code → database
+
+🔷 2. Migration Commands (VERY IMPORTANT 🔥)
+🔸 Step 1: makemigrations
+python manage.py makemigrations
+
+📌 What it does:
+Detects changes in models
+Creates migration file
+
+👉 Example file:
+
+migrations/0001_initial.py
+
+🔸 Step 2: migrate
+python manage.py migrate
+
+📌 What it does:
+Applies migration to database
+Creates actual tables
+🔷 3. Full Flow
+models.py → makemigrations → migration file → migrate → database updated
+
+🔷 4. Example (Step-by-Step)
+Step 1: Create Model
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+Step 2: Run Commands
+python manage.py makemigrations
+python manage.py migrate
+
+Step 3: Result
+
+✔ Table created in database
+✔ Columns: name, age
+
+🔷 5. Migration Files
+
+👉 Located in:
+
+myapp/migrations/
+
+
+👉 Example:
+
+0001_initial.py
+
+🔶 Purpose:
+Stores history of changes
+Helps Django track database structure
+🔷 6. Common Migration Commands
+🔸 Show Migrations
+python manage.py showmigrations
+
+🔸 SQL Query View
+python manage.py sqlmigrate myapp 0001
+
+🔸 Reset Migrations (Advanced ⚠️)
+python manage.py migrate myapp zero
+
+🔷 7. When to Run Migrations?
+
+👉 Run migrations when:
+
+✔ New model created
+✔ Field added/removed
+✔ Field type changed
+
+🔷 8. Real-Life Analogy
+
+Think migrations as:
+
+🏗️ Construction plan
+
+Model = Design
+Migration = Blueprint
+Database = Building
+🔷 9. Common Mistakes
+
+❌ Forgetting to run migrate
+❌ Editing migration files manually
+❌ Running migrate without makemigrations
+
+🔷 10. Important Points (Exam)
+
+✔ Two main commands:
+
+makemigrations
+migrate
+
+✔ Migration files track changes
+✔ Required for database updates
+
+🔷 Final Summary
+Migrations sync model → database
+Automatically generated
+Must be applied using migrate
+🔷 Full Flow (Revise)
+Model → Migration → Database → View → Template

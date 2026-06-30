@@ -1,0 +1,139 @@
+🔷 3. Django Architecture (MVT)
+
+Django follows a design pattern called:
+
+MVT = Model + View + Template
+
+This is similar to MVC (Model-View-Controller), but Django uses slightly different naming.
+
+🔶 1. Model (M)
+📌 Definition:
+
+The Model represents the database structure of your application.
+
+It defines:
+
+Tables
+Fields (columns)
+Relationships between tables
+📌 Example:
+from django.db import models
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+📌 Explanation:
+Student → Table in database
+name, age → Columns
+📌 Real-Life Analogy:
+
+Think of Model as:
+
+📊 Excel Sheet / Database Table
+
+🔶 2. View (V)
+📌 Definition:
+
+The View contains the business logic of the application.
+
+It:
+
+Receives request from user
+Processes data
+Sends response
+📌 Example:
+from django.shortcuts import render
+from .models import Student
+
+def student_list(request):
+    students = Student.objects.all()
+    return render(request, 'students.html', {'students': students})
+
+📌 Explanation:
+Gets data from Model
+Sends it to Template
+📌 Real-Life Analogy:
+
+Think of View as:
+
+🧠 Brain / Logic handler
+
+🔶 3. Template (T)
+📌 Definition:
+
+The Template is responsible for UI (User Interface).
+
+It:
+
+Displays data to user
+Uses HTML + Django Template Language (DTL)
+📌 Example:
+<h1>Student List</h1>
+
+{% for student in students %}
+    <p>{{ student.name }} - {{ student.age }}</p>
+{% endfor %}
+
+📌 Explanation:
+{{ }} → Print data
+{% %} → Logic (loop, conditions)
+📌 Real-Life Analogy:
+
+Think of Template as:
+
+🎨 Frontend / Design layer
+
+
+
+🔷 How MVT Works (Flow)
+
+Let’s understand step-by-step flow:
+
+🔄 Step-by-Step Process:
+User sends request
+👉 Example: http://127.0.0.1:8000/students
+URL dispatcher (urls.py) finds matching view
+View function executes
+Fetches data from Model
+Model interacts with database
+Gets required data
+View sends data to Template
+Template renders HTML
+Response sent back to user
+
+
+
+🔁 Flow Diagram (Simple)
+User → URL → View → Model → Database
+                  ↓
+               Template
+                  ↓
+               Response
+
+
+
+🔷 MVT vs MVC (Important for Exams)
+MVC Concept	Django (MVT)
+Model	Model
+View	Template
+Controller	View
+
+👉 In Django:
+
+View acts like Controller
+Template acts like View
+🔷 Key Advantages of MVT
+
+✔ Separation of concerns
+✔ Easy to maintain
+✔ Scalable architecture
+✔ Reusable components
+
+🔷 Final Understanding (Very Important)
+
+👉 Always remember:
+
+Model → Data
+View → Logic
+Template → Design

@@ -1,0 +1,102 @@
+🔷 Create Django Project
+🔶 1. Make Sure Environment is Ready
+
+👉 Activate your virtual environment first:
+
+env\Scripts\activate
+
+🔶 2. Create Project
+📌 Command:
+django-admin startproject myproject
+
+
+👉 You can change myproject to any name (e.g., studentproject)
+
+🔶 3. Move into Project Folder
+cd myproject
+
+🔶 4. Project Structure (VERY IMPORTANT)
+
+After creating project, folder will look like:
+
+myproject/
+│
+├── manage.py
+│
+└── myproject/
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    ├── asgi.py
+    └── wsgi.py
+
+🔶 5. File Explanation (Exam-Oriented)
+
+🔸 manage.py
+👉 Main command file
+Used for:
+Run server
+Create app
+Database commands
+
+🔸 settings.py
+👉 Brain of project
+Contains:
+Database config
+Installed apps
+Middleware
+
+🔸 urls.py
+👉 Routing system
+Example:
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+🔸 asgi.py / wsgi.py
+👉 Used for deployment (advanced topic)
+
+🔶 6. Run Development Server
+📌 Command:
+python manage.py runserver
+
+
+👉 Output:
+
+Starting development server at http://127.0.0.1:8000/
+
+🔶 7. Open in Browser
+👉 Go to:
+
+http://127.0.0.1:8000/
+
+
+✅ You will see Django welcome page 🎉
+
+🔷 Important Concept
+
+👉 Django uses a built-in development server
+
+✔ Fast testing
+✔ No need for external server
+
+🔷 Common Mistakes
+
+❌ Running command outside project folder
+❌ Django not installed
+❌ Virtual environment not activated
+
+🔷 Pro Tip
+
+👉 Shortcut method (create project in current folder):
+
+django-admin startproject myproject .
+
+
+✔ Avoids extra folder nesting
+
+🔷 Final Flow
+Install Django → Create Project → Run Server

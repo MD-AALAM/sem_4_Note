@@ -1,0 +1,113 @@
+🔷 11. Redirect & URL Handling in Flask
+
+🔸 1. What is Redirect?
+👉 Redirect means:
+➡️ Sending the user from one URL to another URL automatically
+
+Example:
+User opens /
+Flask redirects to /login
+
+🔸 2. Syntax of Redirect
+from flask import redirect, url_for
+
+return redirect(url_for('function_name'))
+
+
+🔸 3. Basic Example
+from flask import Flask, redirect, url_for
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return redirect(url_for('login'))
+
+@app.route('/login')
+def login():
+    return "Login Page"
+
+Flow:
+/ → redirect → /login
+
+
+🔸 4. What is URL Handling?
+👉 URL handling means:
+✔ Creating dynamic URLs
+✔ Passing values in URL
+✔ Generating URLs properly
+
+🔸 5. Dynamic URL Example
+@app.route('/user/<name>')
+def user(name):
+    return f"Hello {name}"
+
+Output:
+/user/Majid → Hello Majid
+
+
+🔸 6. URL with Type (Best Practice ⭐)
+@app.route('/student/<int:id>')
+def student(id):
+    return f"Student ID: {id}"
+👉 Ensures:
+✔ id must be integer
+
+
+🔸 7. Using url_for() (VERY IMPORTANT ⭐)
+👉 Instead of writing URLs manually, use:
+url_for('function_name')
+
+Example:
+@app.route('/profile/<name>')
+def profile(name):
+    return f"Profile: {name}"
+
+@app.route('/go')
+def go():
+    return redirect(url_for('profile', name="Majid"))
+
+👉 Output:
+Profile: Majid
+
+
+🔸 8. Why url_for() is Important?
+
+❌ Hardcoding:
+redirect('/profile/Majid')
+
+
+✔ Better:
+redirect(url_for('profile', name="Majid"))
+
+👉 If URL changes → no problem
+
+
+🔸 9. Redirect After Form Submission (Real Use ⭐)
+from flask import Flask, request, redirect, url_for
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return redirect(url_for('dashboard'))
+    return "Login Page"
+
+@app.route('/dashboard')
+def dashboard():
+    return "Welcome Dashboard"
+
+
+🔸 10. Passing Data via URL
+@app.route('/result/<int:marks>')
+def result(marks):
+    return f"Marks: {marks}"
+
+return redirect(url_for('result', marks=90))
+
+
+🔸 11. Key Points (Exam Ready)
+✔ redirect() → send user to another page
+✔ url_for() → generate URL dynamically
+✔ <variable> → dynamic URL
+✔ <int:id> → type-safe URL
+✔ Used in login, form submission, navigation

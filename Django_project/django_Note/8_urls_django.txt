@@ -1,0 +1,161 @@
+🔷 URLs in Django (Routing System)
+🔶 What are URLs in Django?
+
+👉 URLs decide:
+
+Which function (View) will run when user visits a specific link
+
+🔷 Basic Concept
+
+When user opens:
+
+http://127.0.0.1:8000/home/
+
+
+👉 Django checks urls.py
+👉 Finds matching path
+👉 Calls the corresponding view function
+
+🔷 1. urls.py (Main File)
+
+Inside your project:
+
+myproject/urls.py
+
+📌 Basic Example:
+from django.contrib import admin
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('home/', views.home),
+]
+
+🔶 Explanation:
+path() → Defines URL
+'home/' → URL path
+views.home → Function that will run
+🔷 2. Create View for URL
+
+👉 In views.py:
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome Home Page")
+
+🔷 3. URL Flow (VERY IMPORTANT)
+User → URL → urls.py → View → Response
+
+🔷 4. Types of URL Patterns
+🔸 (A) Simple URL
+path('about/', views.about)
+
+🔸 (B) Dynamic URL (Very Important 🔥)
+
+👉 Used to pass data in URL
+
+Example:
+path('user/<int:id>/', views.user)
+
+
+👉 In views.py:
+
+def user(request, id):
+    return HttpResponse(f"User ID is {id}")
+
+
+👉 URL:
+
+/user/5/
+
+
+✅ Output:
+
+User ID is 5
+
+🔸 (C) String URL
+path('hello/<str:name>/', views.hello)
+
+def hello(request, name):
+    return HttpResponse(f"Hello {name}")
+
+🔷 5. URL with Multiple Parameters
+path('add/<int:a>/<int:b>/', views.add)
+
+def add(request, a, b):
+    return HttpResponse(f"Sum = {a + b}")
+
+🔷 6. Including App URLs (BEST PRACTICE ⭐)
+
+👉 Instead of writing all URLs in one file, we separate them.
+
+Step 1: Create urls.py in app
+
+👉 myapp/urls.py:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home),
+    path('about/', views.about),
+]
+
+Step 2: Connect in project urls.py
+
+👉 myproject/urls.py:
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('myapp.urls')),
+]
+
+🔷 7. Why use include()?
+
+👉 To keep project clean and modular
+
+✔ Large projects need multiple apps
+✔ Each app has its own URLs
+
+🔷 8. Important Concepts
+📌 Trailing Slash /
+
+👉 Always use / at end:
+
+good → /home/
+bad  → /home
+
+📌 Name URLs (Very Important)
+path('home/', views.home, name='home')
+
+
+👉 Used in templates:
+
+<a href="{% url 'home' %}">Home</a>
+
+🔷 9. Real-Life Analogy
+
+Think URLs as:
+
+📞 Phone directory
+
+URL = Phone number
+View = Person answering
+🔷 Common Mistakes
+
+❌ Forgetting to import views
+❌ Not using include() in large projects
+❌ Wrong URL pattern syntax
+
+🔷 Final Summary
+URL maps request → view
+Defined using path()
+Supports dynamic values
+Can be modular using include()
+🔷 Final Flow (Revise This)
+User → URL → urls.py → View → Template → Response

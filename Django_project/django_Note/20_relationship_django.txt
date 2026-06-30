@@ -1,0 +1,126 @@
+🔷 Relationships in Django
+🔶 What are Relationships?
+
+👉 Relationships define how one model (table) is connected to another
+
+📌 Used when data is related between tables
+
+🔷 Simple Definition (Exam Point)
+
+Relationships in Django are used to connect models (tables) using keys like ForeignKey, OneToOneField, and ManyToManyField.
+
+🔷 Types of Relationships
+
+There are 3 main types:
+
+🔶 1. ForeignKey (One-to-Many) 🔥
+📌 Meaning:
+
+One object can have many related objects
+
+🎯 Example:
+
+👉 One Teacher → Many Students
+
+🔶 Code:
+class Teacher(models.Model):
+    name = models.CharField(max_length=100)
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+
+🔶 Explanation:
+One teacher → many students
+ForeignKey creates relation
+🔶 Access Data:
+student.teacher.name
+
+teacher.student_set.all()
+
+🔷 2. OneToOneField (One-to-One)
+📌 Meaning:
+
+One object is related to only one object
+
+🎯 Example:
+
+👉 One User → One Profile
+
+🔶 Code:
+class User(models.Model):
+    username = models.CharField(max_length=100)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField()
+
+🔶 Explanation:
+One user → one profile
+Used for extending models
+🔶 Access Data:
+user.profile.bio
+
+🔷 3. ManyToManyField (Many-to-Many)
+📌 Meaning:
+
+Many objects relate to many objects
+
+🎯 Example:
+
+👉 Many Students ↔ Many Courses
+
+🔶 Code:
+class Course(models.Model):
+    name = models.CharField(max_length=100)
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    courses = models.ManyToManyField(Course)
+
+🔶 Explanation:
+One student → many courses
+One course → many students
+🔶 Access Data:
+student.courses.all()
+
+course.student_set.all()
+
+🔷 4. Real-Life Analogy
+Relationship	Example
+One-to-Many	Teacher → Students
+One-to-One	User → Profile
+Many-to-Many	Students ↔ Courses
+🔷 5. on_delete Option (Important 🔥)
+
+👉 Used in ForeignKey & OneToOneField
+
+🔸 Example:
+teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+
+📌 Meaning:
+If teacher is deleted → students also deleted
+🔸 Other Options:
+Option	Meaning
+CASCADE	Delete related data
+SET_NULL	Set null
+PROTECT	Prevent deletion
+🔷 6. Important Points (Exam)
+
+✔ ForeignKey = One-to-Many
+✔ OneToOneField = One-to-One
+✔ ManyToManyField = Many-to-Many
+✔ Relationships connect tables
+
+🔷 7. Common Mistakes
+
+❌ Forget on_delete
+❌ Wrong relationship type
+❌ Not running migrations
+
+🔷 Final Summary
+Relationships connect models
+Used for real-world data
+3 main types: FK, OneToOne, ManyToMany
+🔷 Full Flow (Revise)
+Model ↔ Model → ORM → Database → View → Template

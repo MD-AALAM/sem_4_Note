@@ -1,0 +1,94 @@
+🔷 10. Static Files in Flask
+
+🔸 1. What are Static Files?
+👉 Static files are files that do not change dynamically.
+
+Examples:
+✔ CSS (design)
+✔ JavaScript (logic in browser)
+✔ Images (logo, background)
+
+🔸 2. Why Static Files?
+
+Without static files:
+❌ Plain HTML (no design)
+
+With static files:
+✔ Beautiful UI (CSS)
+✔ Interactive pages (JS)
+✔ Images & icons
+
+🔸 3. Folder Structure (VERY IMPORTANT ⭐)
+->Flask uses a special folder:
+
+project/
+│
+├── app.py
+├── templates/
+│   └── index.html
+└── static/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   └── script.js
+    └── images/
+        └── logo.png
+
+👉 Folder name must be:
+✔ static
+
+🔸 4. Using CSS in Flask
+CSS File → static/css/style.css
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: red;
+}
+
+HTML File → templates/index.html
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<h1>Hello Student</h1>
+
+👉 url_for('static', filename='...') is used to link static files.
+
+🔸 5. Using Images
+<img src="{{ url_for('static', filename='images/logo.png') }}" width="200">
+
+👉 Image will load from static/images/
+
+🔸 6. Using JavaScript
+JS File → static/js/script.js
+alert("Welcome to Flask App!");
+
+HTML:
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+🔸 7. Important Function ⭐
+url_for('static', filename='path')
+
+Meaning:
+static → folder name
+filename → file path inside static
+
+🔸 8. Common Mistakes ❌
+
+❌ Writing direct path:
+<link href="static/css/style.css">
+
+✔ Correct way:
+<link href="{{ url_for('static', filename='css/style.css') }}">
+
+🔸 9. Real-Life Use
+👉 Login page styling
+👉 Dashboard UI
+👉 Buttons, forms design
+👉 Images in project
+
+🔸 10. Key Points (Exam Ready)
+✔ Static files = CSS, JS, Images
+✔ Stored in static folder
+✔ Use url_for('static', filename=...)
+✔ Improves UI & UX

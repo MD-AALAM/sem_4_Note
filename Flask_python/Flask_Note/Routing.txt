@@ -1,0 +1,58 @@
+🔷 Routing in Flask
+
+📌 Definition
+👉 Routing is the process of mapping a URL to a function in a Flask application.
+
+👉 In simple words:
+“Which URL should run which function”
+
+🔹 Basic Syntax
+@app.route('/path')
+def function_name():
+    return "Response"
+
+🔹 How it Works
+👉 When user opens browser:
+http://127.0.0.1:5000/about
+
+👉 Flask:
+Checks /about route
+Calls about() function
+Returns response
+
+🔹 Dynamic Routing
+👉 Used when URL contains variable data
+@app.route('/user/<name>')
+def user(name):
+    return f"Hello {name}"
+
+🔹 Data Types in Routing
+Types:
+1)-string (default)
+2)-int
+3)-float
+4)-path
+
+🔹 Routing with HTTP Methods
+from flask import request
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return "Login Submitted"
+    return "Login Page"
+
+
+🔹 URL Building (Best Practice)
+from flask import url_for
+
+@app.route('/home')
+def home():
+    return "Home"
+
+@app.route('/go')
+def go():
+    return url_for('home')
+
+👉 Output:
+/home

@@ -1,0 +1,133 @@
+🔷 Django Project Structure
+
+When you create a project using:
+
+django-admin startproject myproject
+
+
+You get this structure:
+
+myproject/
+│
+├── manage.py
+│
+└── myproject/
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    ├── asgi.py
+    └── wsgi.py
+
+🔶 1. Outer Folder (myproject/)
+
+👉 This is just a container folder
+👉 You can rename it freely
+
+🔶 2. manage.py (VERY IMPORTANT ⭐)
+📌 What it is:
+
+Command-line utility for Django
+
+📌 Uses:
+python manage.py runserver
+python manage.py startapp appname
+python manage.py migrate
+
+📌 Real-Life Analogy:
+
+🕹️ Remote control of your project
+
+🔶 3. Inner Folder (myproject/)
+
+👉 This is the actual project package
+👉 Contains core configuration files
+
+🔶 4. init.py
+📌 Purpose:
+Tells Python this is a package
+
+👉 Usually empty
+👉 No need to modify
+
+🔶 5. settings.py (MOST IMPORTANT 🔥)
+📌 What it is:
+
+Main configuration file of Django project
+
+📌 Contains:
+Installed apps
+Database settings
+Middleware
+Static files
+Security settings
+📌 Example:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+]
+
+📌 Real-Life Analogy:
+
+⚙️ Settings of a mobile phone
+
+🔶 6. urls.py
+📌 What it is:
+
+URL routing system
+
+📌 Example:
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+📌 Explanation:
+Connects URL → View
+📌 Real-Life Analogy:
+
+🚦 Traffic controller
+
+🔶 7. wsgi.py
+📌 Purpose:
+Used for deployment (production server)
+
+👉 Connects Django with web servers like:
+
+Apache
+Nginx
+🔶 8. asgi.py
+📌 Purpose:
+Used for async features (modern Django)
+
+👉 Used in:
+
+WebSockets
+Real-time apps
+🔷 Full Flow Understanding
+User → URL → View → Model → Template → Response
+
+🔷 Visual Understanding
+manage.py → Controls project
+
+settings.py → Configuration
+urls.py → Routing
+
+views.py → Logic (in app)
+models.py → Database
+templates → UI
+
+🔷 Important Exam Points
+
+✔ settings.py is the brain
+✔ urls.py handles routing
+✔ manage.py controls project
+✔ wsgi/asgi used in deployment
+
+🔷 Pro Tip (Very Important)
+
+👉 Always remember:
+
+Project = Configuration
+App = Functionality

@@ -1,0 +1,178 @@
+🔷 Create Django Project (Step-by-Step)
+
+We will create a Django project from scratch.
+
+
+🔶 1. Install Django
+
+First, make sure Django is installed:
+
+pip install django
+
+
+👉 Check version:
+
+django-admin --version
+
+
+🔶 2. Create Project
+📌 Command:
+django-admin startproject myproject
+
+
+👉 This will create a folder named myproject
+
+
+🔶 3. Project Structure (Important for Exams)
+
+After creation, structure will look like:
+
+myproject/
+│
+├── manage.py
+│
+└── myproject/
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    ├── asgi.py
+    └── wsgi.py
+
+🔶 4. File Explanation
+🔸 manage.py
+
+👉 Command-line tool
+
+Used for:
+
+Run server
+Migrations
+Create apps
+🔸 settings.py
+
+👉 Main configuration file
+
+Contains:
+
+Database settings
+Installed apps
+Middleware
+Static files
+🔸 urls.py
+
+👉 URL routing system
+
+Example:
+
+from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+🔸 wsgi.py / asgi.py
+
+👉 Used for deployment (advanced topic)
+
+🔶 5. Run Development Server
+
+Go inside project folder:
+
+cd myproject
+
+
+Run server:
+
+python manage.py runserver
+
+
+👉 Output:
+
+Starting development server at http://127.0.0.1:8000/
+
+
+Open browser:
+👉 http://127.0.0.1:8000/
+
+You will see Django welcome page 🎉
+
+🔶 6. Create App (Very Important)
+
+In Django:
+
+Project = Full website
+App = Feature/module
+
+📌 Command:
+python manage.py startapp myapp
+
+🔶 7. App Structure
+myapp/
+├── admin.py
+├── apps.py
+├── models.py
+├── views.py
+├── tests.py
+└── migrations/
+
+🔶 8. Register App in Project
+
+Go to settings.py
+
+Add your app:
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    ...
+    'myapp',
+]
+
+🔶 9. First View (Basic Example)
+
+👉 In views.py:
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello, Django!")
+
+🔶 10. Connect URL
+
+👉 In urls.py:
+
+from django.contrib import admin
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.home),
+]
+
+🔶 11. Run Again
+python manage.py runserver
+
+
+👉 Open:
+
+http://127.0.0.1:8000/
+
+
+✅ Output:
+
+Hello, Django!
+
+🔷 Final Flow (Revision)
+Create project
+Create app
+Add app in settings
+Write view
+Connect URL
+Run server
+🔷 Pro Tip (Important)
+
+👉 Always follow this order:
+
+Project → App → View → URL → Template

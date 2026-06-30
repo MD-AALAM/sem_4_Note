@@ -1,0 +1,84 @@
+🔷 9. Form Handling in Flask
+
+🔸 1. What is Form Handling?
+👉 Form handling means:
+✔ Taking input from user (HTML form)
+✔ Sending it to Flask
+✔ Processing it in backend
+
+🔸 2. Real-Life Example
+👉 Login Form
+👉 Registration Form
+👉 Feedback Form
+
+🔸 3. Basic Flow (VERY IMPORTANT ⭐)
+User → HTML Form → Flask (request) → Process → Response
+
+🔸 4. HTML Form Example
+<form method="POST" action="/submit">
+    <input type="text" name="username" placeholder="Enter Name">
+    <input type="submit" value="Submit">
+</form>
+
+Explanation:
+method="POST" → send data securely
+action="/submit" → send data to /submit route
+name="username" → key for data
+
+🔸 5. Flask Code (Handle Form)
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('form.html')
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    username = request.form['username']
+    return "Hello " + username
+
+🔸 6. How Data is Received
+👉 request.form is a dictionary
+username = request.form['username']
+✔ Key must match HTML name
+
+🔸 8. Example with GET Method
+<form method="GET" action="/search">
+    <input type="text" name="query">
+    <input type="submit">
+</form>
+
+@app.route('/search')
+def search():
+    q = request.args.get('query')
+    return "You searched: " + q
+
+👉 request.args → for GET data
+
+🔸 9. Handling Both GET & POST
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        return "Welcome " + username
+    return render_template('login.html')
+
+👉 Flow:
+GET → show form
+POST → process form
+
+🔸 10. Important Tips ⭐
+
+✔ Always match name with backend key
+✔ Use POST for sensitive data
+✔ Validate input (avoid errors)
+
+🔸 12. Key Points (Exam Ready)
+
+✔ Forms send data from frontend to backend
+✔ Use request.form for POST
+✔ Use request.args for GET
+✔ Always define methods=['POST']
+✔ name attribute is very important

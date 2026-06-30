@@ -1,0 +1,177 @@
+🔷 Templates in Django
+🔶 What is a Template?
+
+👉 A Template is an HTML file used to display data to the user.
+
+📌 It combines HTML + Django Template Language (DTL)
+
+🔷 Simple Definition (Exam Point)
+
+Template is the presentation layer in Django (MVT architecture).
+
+🔷 1. Why Templates?
+
+Without templates:
+
+return HttpResponse("Hello Majid")
+
+
+👉 Only plain text ❌
+
+With templates:
+✔ Proper UI
+✔ Dynamic data
+✔ Reusable design
+
+🔷 2. Create Templates Folder
+
+👉 Inside your app (myapp), create:
+
+myapp/
+└── templates/
+    └── home.html
+
+🔷 3. Configure Templates Path
+
+👉 In settings.py:
+
+TEMPLATES = [
+    {
+        'DIRS': [],
+    },
+]
+
+
+👉 OR (for global templates folder):
+
+'DIRS': ['templates'],
+
+🔷 4. Basic Template Example
+
+👉 home.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<h1>Welcome to Django</h1>
+
+</body>
+</html>
+
+🔷 5. Render Template in View
+
+👉 In views.py:
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
+
+🔷 6. Passing Data to Template
+
+👉 In views.py:
+
+def home(request):
+    data = {
+        'name': 'Majid',
+        'age': 20
+    }
+    return render(request, 'home.html', data)
+
+🔶 Display in HTML
+<h1>Hello {{ name }}</h1>
+<p>Age: {{ age }}</p>
+
+🔷 7. Django Template Syntax (DTL)
+🔸 (A) Variables
+{{ name }}
+{{ age }}
+
+
+👉 Used to display data
+
+🔸 (B) If Condition
+{% if age > 18 %}
+    <p>Adult</p>
+{% else %}
+    <p>Minor</p>
+{% endif %}
+
+🔸 (C) For Loop
+{% for student in students %}
+    <p>{{ student }}</p>
+{% endfor %}
+
+🔷 8. Template Inheritance (VERY IMPORTANT 🔥)
+
+👉 Used for reusable design
+
+Step 1: Create base.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+</head>
+<body>
+
+<header>
+    <h1>My Website</h1>
+</header>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+
+Step 2: Extend in child template
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<h2>Welcome to Home Page</h2>
+{% endblock %}
+
+🔷 9. Static Files (CSS/JS)
+
+👉 In template:
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+🔷 10. Real-Life Analogy
+
+Think Template as:
+
+🎨 Front-end design of a website
+
+View = Brain
+Template = Face/UI
+🔷 Common Mistakes
+
+❌ Wrong template path
+❌ Forget {% load static %}
+❌ Missing quotes in {% extends %}
+
+🔷 Important Exam Points
+
+✔ Template = UI layer
+✔ Uses HTML + DTL
+✔ Supports loops & conditions
+✔ Supports inheritance
+
+🔷 Final Summary
+Template shows data
+Rendered using render()
+Uses {{ }} and {% %}
+Helps create dynamic pages
+🔷 Full Flow (Revise)
+User → URL → View → Template → Response

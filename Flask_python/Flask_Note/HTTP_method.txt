@@ -1,0 +1,58 @@
+🔷Definition:
+👉HTTP Methods are the actions that a client (browser/app) can perform on a server in the Hypertext Transfer Protocol.
+Think of them like verbs (actions) in communication between client and server.
+
+🔷 Main HTTP Methods (B.Tech Level Explanation)
+
+1. GET
+👉 Used to retrieve data from the server
+No data is changed on server
+Parameters are sent in URL
+
+📌 Example:
+->GET /students
+
+📌 Use case:
+Fetch user list
+Open a webpage
+
+2. POST
+👉 Used to send data to server (create new resource)
+Data is sent in request body
+Used in forms
+
+📌 Example:
+POST /students
+
+📌 Use case:
+Register user
+Submit form
+
+3. PUT
+👉 Used to update entire resource
+Replaces old data completely
+
+📌 Example:
+PUT /students/1
+
+📌 Use case:
+Update full profile
+
+4. PATCH
+👉 Used to update partial data
+Only modifies specific fields
+
+📌 Example:
+PATCH /students/1
+
+📌 Use case:
+Update only email or name
+
+5. DELETE
+👉 Used to remove data
+
+📌 Example:
+DELETE /students/1
+
+📌 Use case:
+Delete account

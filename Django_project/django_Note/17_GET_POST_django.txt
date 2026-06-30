@@ -1,0 +1,122 @@
+🔷 GET vs POST in Django (HTTP Methods)
+🔶 What are GET and POST?
+
+👉 These are HTTP methods used to send data between:
+
+📌 Client (Browser) ↔ Server (Django)
+
+🔷 Simple Definition (Exam Point)
+GET → Used to request data
+POST → Used to send/submit data
+🔷 1. GET Method
+🔶 Features:
+
+✔ Data is sent in URL
+✔ Visible to user
+✔ Used for fetching data
+✔ Less secure
+
+🔶 Example:
+
+👉 URL:
+
+http://127.0.0.1:8000/?name=Majid
+
+
+👉 View:
+
+def home(request):
+    name = request.GET.get('name')
+    return HttpResponse(name)
+
+🔶 Output:
+Majid
+
+🔶 When to Use GET?
+
+✔ Search
+✔ Filters
+✔ Fetch data
+
+🔷 2. POST Method
+🔶 Features:
+
+✔ Data is hidden (not in URL)
+✔ More secure
+✔ Used to submit data
+✔ Can modify database
+
+🔶 Example:
+
+👉 HTML Form:
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="username">
+    <button type="submit">Submit</button>
+</form>
+
+
+👉 View:
+
+def form(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        return HttpResponse(username)
+
+    return render(request, 'form.html')
+
+🔶 Output:
+
+👉 User enters name → submitted → displayed
+
+🔷 3. Key Differences (Very Important 🔥)
+Feature	GET	POST
+Data Location	URL	Body
+Security	❌ Low	✔ High
+Use	Fetch data	Submit data
+Length Limit	Limited	Large
+Database Change	❌ No	✔ Yes
+🔷 4. Django Syntax Difference
+# GET
+request.GET.get('name')
+
+# POST
+request.POST.get('name')
+
+🔷 5. Real-Life Analogy
+
+👉 Think like this:
+
+GET = 🔍 Searching on Google
+POST = 📝 Filling a form (login/signup)
+🔷 6. Important Rule (Exam + Interview)
+
+👉 Always remember:
+
+📌 GET = Safe (Read only)
+📌 POST = Unsafe (Modify data)
+
+🔷 7. Common Mistakes
+
+❌ Using GET for password submission
+❌ Forgetting {% csrf_token %} in POST
+❌ Not checking request.method
+
+🔷 8. Pro Tip
+
+👉 Always use:
+
+if request.method == 'POST':
+
+
+✔ Prevents errors
+✔ Handles form correctly
+
+🔷 Final Summary
+GET → fetch data
+POST → send data
+GET is visible, POST is secure
+Used in forms and APIs
+🔷 Full Flow (Revise)
+User → Form → (GET/POST) → View → Process → Response

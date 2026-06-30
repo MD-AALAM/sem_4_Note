@@ -1,0 +1,126 @@
+:
+
+🔷 Django ORM (Object Relational Mapper)
+🔶 What is ORM?
+
+👉 ORM stands for:
+
+📌 Object Relational Mapper
+
+🔷 Simple Definition (Exam Point)
+
+Django ORM is a tool that allows us to interact with the database using Python code instead of SQL queries.
+
+🔷 1. Why ORM?
+
+Without ORM:
+❌ Write SQL queries manually
+❌ More complex
+❌ Error-prone
+
+With ORM:
+✔ Use Python code
+✔ Easy to understand
+✔ Database-independent
+
+🔷 2. Basic Concept
+
+👉 ORM converts:
+
+Python Code  →  SQL Query  →  Database
+
+🔶 Example:
+Student.objects.all()
+
+
+👉 Converted to SQL:
+
+SELECT * FROM student;
+
+🔷 3. Common ORM Operations
+🔸 (A) Create (Insert)
+Student.objects.create(name="Majid", age=20)
+
+🔸 (B) Read (Fetch Data)
+Get all:
+Student.objects.all()
+
+Get one:
+Student.objects.get(id=1)
+
+🔸 (C) Filter Data
+Student.objects.filter(age=20)
+
+🔸 (D) Update
+student = Student.objects.get(id=1)
+student.name = "Ali"
+student.save()
+
+🔸 (E) Delete
+student.delete()
+
+🔷 4. QuerySet (Important 🔥)
+
+👉 objects.all() returns a:
+
+📌 QuerySet (collection of objects)
+
+🔶 Example:
+students = Student.objects.all()
+
+
+👉 You can loop:
+
+{% for student in students %}
+    {{ student.name }}
+{% endfor %}
+
+🔷 5. Advanced Queries
+🔸 Multiple Filters
+Student.objects.filter(age=20, name="Majid")
+
+🔸 Contains
+Student.objects.filter(name__contains="Ma")
+
+🔸 Order By
+Student.objects.order_by('age')
+
+🔷 6. Real-Life Analogy
+
+Think ORM as:
+
+🧠 Translator
+
+You speak Python
+ORM converts to SQL
+Database understands SQL
+🔷 7. Advantages of ORM
+
+✔ No need to write SQL
+✔ Faster development
+✔ Secure (prevents SQL injection)
+✔ Works with multiple databases
+
+🔷 8. Common Mistakes
+
+❌ Using get() when multiple records exist
+❌ Not handling exceptions
+❌ Confusing filter() vs get()
+
+🔷 9. Important Difference
+Method	Use
+get()	Single object
+filter()	Multiple objects
+🔷 10. Important Exam Points
+
+✔ ORM = Python ↔ Database
+✔ Uses QuerySet
+✔ Supports CRUD operations
+✔ Replaces SQL
+
+🔷 Final Summary
+ORM simplifies database interaction
+Uses Python instead of SQL
+Central part of Django
+🔷 Full Flow (Revise)
+Model → ORM → SQL → Database → Result → View → Template

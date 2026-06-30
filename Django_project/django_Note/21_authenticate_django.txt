@@ -1,0 +1,134 @@
+🔷 Authentication System in Django
+🔶 What is Authentication?
+
+👉 Authentication means:
+
+📌 Verifying user identity (Login, Logout, Signup)
+
+🔷 Simple Definition (Exam Point)
+
+Django Authentication System is used to manage users, login, logout, and permissions.
+
+🔷 1. Features of Django Authentication
+
+✔ User Registration (Signup)
+✔ Login / Logout
+✔ Password Hashing (secure 🔒)
+✔ User Sessions
+✔ Permissions & Groups
+
+🔷 2. Django Built-in User Model
+
+👉 Django already provides a model:
+
+from django.contrib.auth.models import User
+
+🔶 Fields in User Model:
+username
+email
+password
+is_staff
+is_superuser
+🔷 3. User Registration (Signup)
+🔶 Step 1: Create Form
+from django.contrib.auth.forms import UserCreationForm
+
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    return render(request, 'register.html', {'form': form})
+
+🔶 Step 2: Template
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+
+🔷 4. Login System
+🔶 View:
+from django.contrib.auth import authenticate, login
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponse("Login Successful")
+        else:
+            return HttpResponse("Invalid Credentials")
+
+    return render(request, 'login.html')
+
+🔷 5. Logout System
+🔶 View:
+from django.contrib.auth import logout
+
+def user_logout(request):
+    logout(request)
+    return HttpResponse("Logged Out")
+
+🔷 6. Check Logged-in User
+def home(request):
+    if request.user.is_authenticated:
+        return HttpResponse(f"Welcome {request.user.username}")
+    else:
+        return HttpResponse("Please login")
+
+🔷 7. Login Required (Security 🔥)
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def dashboard(request):
+    return HttpResponse("This is dashboard")
+
+🔷 8. Real-Life Analogy
+
+Think Authentication as:
+
+🔐 Security Guard
+
+Login → Entry
+Logout → Exit
+Permissions → Access control
+🔷 9. Important Concepts
+🔸 authenticate()
+
+👉 Checks username & password
+
+🔸 login()
+
+👉 Creates session
+
+🔸 logout()
+
+👉 Ends session
+
+🔷 10. Common Mistakes
+
+❌ Not using csrf_token
+❌ Wrong username/password handling
+❌ Forgetting login_required
+
+🔷 11. Important Exam Points
+
+✔ Built-in authentication system
+✔ Uses User model
+✔ Supports login/logout/signup
+✔ Uses sessions
+
+🔷 Final Summary
+Authentication = User verification
+Django provides built-in system
+Secure and easy to use
+🔷 Full Flow (Revise)
+User → Login Form → Authenticate → Session → Access → Logout

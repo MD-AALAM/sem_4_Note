@@ -1,0 +1,251 @@
+📘 DJANGO FULL NOTES (Beginner → Advanced)
+🔷 1. What is Django?
+
+Django is a high-level Python web framework used to build secure and scalable websites quickly.
+
+👉 Example:
+
+Instagram (uses Django)
+E-commerce websites
+Blog systems
+🔷 2. Why Django?
+
+✔ Fast development
+✔ Built-in security
+✔ Uses Python (easy language)
+✔ Comes with admin panel
+✔ Follows clean architecture
+
+🔷 3. Django Architecture (MVT)
+
+Django follows MVT pattern:
+
+Component	Meaning	Work
+Model	Database	Stores data
+View	Logic	Handles request
+Template	UI	HTML display
+
+👉 Flow:
+Client → URL → View → Model → Template → Response
+
+🔷 4. Install Django
+pip install django
+
+
+Check version:
+
+django-admin --version
+
+🔷 5. Create Project
+django-admin startproject myproject
+cd myproject
+python manage.py runserver
+
+
+👉 Open browser:
+
+http://127.0.0.1:8000/
+
+🔷 6. Project Structure
+myproject/
+│
+├── manage.py
+├── myproject/
+    ├── __init__.py
+    ├── settings.py
+    ├── urls.py
+    ├── asgi.py
+    ├── wsgi.py
+
+🔷 7. Create App
+python manage.py startapp myapp
+
+
+👉 Register app in settings.py:
+
+INSTALLED_APPS = [
+    'myapp',
+]
+
+🔷 8. URLs in Django
+
+👉 urls.py:
+
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+    path('', views.home),
+]
+
+🔷 9. Views
+
+👉 views.py:
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello Django")
+
+🔷 10. Templates (HTML)
+
+👉 Create folder: templates
+
+<h1>Hello {{ name }}</h1>
+
+
+👉 View:
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'index.html', {'name': 'Majid'})
+
+🔷 11. Static Files (CSS, JS)
+
+👉 Create static folder
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+👉 Add in settings:
+
+STATIC_URL = 'static/'
+
+🔷 12. Models (Database)
+
+👉 models.py:
+
+from django.db import models
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+🔷 13. Migrations
+python manage.py makemigrations
+python manage.py migrate
+
+🔷 14. Admin Panel
+python manage.py createsuperuser
+
+
+👉 Register model:
+
+from django.contrib import admin
+from .models import Student
+
+admin.site.register(Student)
+
+🔷 15. Forms
+from django import forms
+
+class StudentForm(forms.Form):
+    name = forms.CharField()
+
+🔷 16. Model Forms
+from django.forms import ModelForm
+from .models import Student
+
+class StudentForm(ModelForm):
+    class Meta:
+        model = Student
+        fields = '__all__'
+
+🔷 17. GET vs POST
+Method	Use
+GET	Fetch data
+POST	Send data
+if request.method == 'POST':
+    name = request.POST['name']
+
+🔷 18. CRUD Operations
+Create
+Student.objects.create(name="Ali", age=20)
+
+Read
+Student.objects.all()
+
+Update
+obj = Student.objects.get(id=1)
+obj.name = "Majid"
+obj.save()
+
+Delete
+obj.delete()
+
+🔷 19. Django ORM
+
+👉 No SQL needed:
+
+Student.objects.filter(age=20)
+
+🔷 20. Relationships
+Foreign Key (Many to One)
+class Course(models.Model):
+    name = models.CharField(max_length=100)
+
+class Student(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+🔷 21. Authentication System
+from django.contrib.auth.models import User
+
+
+Login:
+
+from django.contrib.auth import authenticate, login
+
+🔷 22. Sessions & Cookies
+
+👉 Used to store user login info
+
+request.session['user'] = 'Majid'
+
+🔷 23. Middleware
+
+👉 Works between request & response
+
+Example:
+
+Authentication
+Security
+🔷 24. Django Security
+
+✔ CSRF protection
+✔ SQL injection protection
+✔ XSS protection
+
+🔷 25. Class-Based Views (Advanced)
+from django.views import View
+
+class HomeView(View):
+    def get(self, request):
+        return HttpResponse("Hello")
+
+🔷 26. REST API (Django REST Framework)
+pip install djangorestframework
+
+
+👉 Used for:
+
+Mobile apps
+APIs
+🔷 27. Deployment
+
+👉 Deploy using:
+
+PythonAnywhere
+Render
+AWS
+🔷 28. Best Practices
+
+✔ Use apps properly
+✔ Keep code modular
+✔ Use environment variables
+✔ Follow MVC structure
+
+
+
+
+Note->migrations karne ke liye pehle models banane honge uske baad admin jake model ko register karo aur uske baad app register karo jo ki apps.py file ke andar app ka name copy karo aur usko settings.py  me jake installed app me paste karo

@@ -1,0 +1,92 @@
+🔷 1. CREATE Operation (Data Insert karna)
+
+👉 Jab user form submit karta hai
+
+@app.route('/', methods=['GET','POST'])
+def create_todo():
+    if request.method == 'POST':
+        title = request.form['title']
+        desc = request.form['desc']
+
+        todo = Todo(title=title, desc=desc)  # object create
+        db.session.add(todo)                 # add to DB
+        db.session.commit()                  # save permanently
+
+        return redirect('/')
+
+    return render_template('index.html')
+
+🧠 Samajh:
+request.form → user se data lena
+db.session.add() → temporary add
+commit() → permanent save
+🔷 2. READ Operation (Data Fetch karna)
+
+👉 Database se data dikhana
+
+@app.route('/')
+def read_todo():
+    allTodo = Todo.query.all()  # saare records
+    return render_template('index.html', allTodo=allTodo)
+
+🧠 Samajh:
+query.all() → sab data list me
+HTML me loop karke show karte ho
+🔷 3. UPDATE Operation (Data Edit karna)
+@app.route('/update/<int:sno>', methods=['GET','POST'])
+def update_todo(sno):
+    todo = Todo.query.filter_by(sno=sno).first()
+
+    if request.method == 'POST':
+        todo.title = request.form['title']
+        todo.desc = request.form['desc']
+
+        db.session.commit()   # update save
+        return redirect('/')
+
+    return render_template('update.html', todo=todo)
+
+🧠 Samajh:
+filter_by() → specific record find
+first() → ek record
+values change karke commit
+🔷 4. DELETE Operation (Data Delete karna)
+@app.route('/delete/<int:sno>')
+def delete_todo(sno):
+    todo = Todo.query.filter_by(sno=sno).first()
+
+    db.session.delete(todo)  # delete
+    db.session.commit()      # permanent delete
+
+    return redirect('/')
+
+🧠 Samajh:
+record find karo
+delete karo
+commit karo
+🎯 Final Summary (Exam Ready)
+Operation	Code Function	Kaam
+CREATE	add() + commit()	Data insert
+READ	query.all()	Data fetch
+UPDATE	filter_by() + commit()	Data change
+DELETE	delete() + commit()	Data remove
+🔥 Bonus (Important Correction in Your Code)
+
+👉 Tumhare original code me:
+
+db.session.add(todo)   # update me unnecessary hai
+
+
+❌ Ye zarurat nahi hai UPDATE me
+✔ Sirf commit() enough hai
+
+🚀 Pro Tip (Interview Level)
+
+👉 CRUD ka full form:
+
+C → Create
+R → Read
+U → Update
+D → Delete
+
+👉 Ye har database application ka core concept hai

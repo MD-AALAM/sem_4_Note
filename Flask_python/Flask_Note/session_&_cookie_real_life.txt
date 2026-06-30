@@ -1,0 +1,122 @@
+🔷 1. Cookies in Real Life 🌐
+🔸 Kahan Use Hoti Hai?
+
+👉 Cookies ka use hota hai:
+
+User preferences save karne ke liye
+Tracking ke liye
+“Remember me” type features ke liye
+🔸 Real Website Examples
+✅ Example 1: Dark Mode / Light Mode
+
+👉 Jab tum kisi website pe dark mode ON karte ho:
+
+Website ek cookie save karti hai:
+theme = dark
+
+
+👉 Next time:
+
+Website automatically dark mode open karegi
+
+✔ Ye cookie ka use hai
+
+✅ Example 2: Language Selection
+
+👉 Tum language choose karte ho:
+
+English / Hindi
+
+👉 Cookie me store hota hai:
+
+language = hindi
+
+✅ Example 3: E-commerce Tracking
+
+👉 Jab tum kisi product ko dekhte ho (Amazon, Flipkart)
+
+Cookies track karti hain:
+recent_product = shoes
+
+
+👉 Isliye tumhe ads me same product dikhta hai 😄
+
+🔸 Flask Example (Cookie)
+from flask import Flask, make_response
+
+app = Flask(__name__)
+
+@app.route('/')
+def set_cookie():
+    res = make_response("Cookie Set")
+    res.set_cookie('theme', 'dark')
+    return res
+
+@app.route('/get')
+def get_cookie():
+    from flask import request
+    theme = request.cookies.get('theme')
+    return "Theme is " + str(theme)
+
+🔷 2. Sessions in Real Life 🔐
+🔸 Kahan Use Hoti Hai?
+
+👉 Sessions ka use hota hai:
+
+Login system
+Authentication
+User-specific data
+🔸 Real Website Examples
+✅ Example 1: Login System (MOST IMPORTANT ⭐)
+
+👉 Tum login karte ho (Instagram, Gmail)
+
+Server session create karta hai:
+user = Majid
+
+
+👉 Jab tum next page pe jaate ho:
+
+Server check karta hai session → allow access
+
+✔ Agar session nahi → login page pe redirect
+
+✅ Example 2: Shopping Cart
+
+👉 Tum Amazon pe products add karte ho:
+
+Session me store hota hai:
+cart = [shoe, watch]
+
+
+👉 Jab tak logout nahi karte → cart save rehta hai
+
+✅ Example 3: Dashboard Access
+
+👉 Without login:
+❌ Access denied
+
+👉 With session:
+✔ Dashboard open
+
+🔸 Flask Example (Session)
+from flask import Flask, session, redirect, url_for
+
+app = Flask(__name__)
+app.secret_key = "secret123"
+
+@app.route('/login')
+def login():
+    session['user'] = "Majid"
+    return "Logged in"
+
+@app.route('/dashboard')
+def dashboard():
+    if 'user' in session:
+        return "Welcome " + session['user']
+    return redirect(url_for('login'))
+
+🔷 3. Real Flow (🔥 Important)
+🔸 Login Website Flow
+User login → Session create → Session ID cookie me store → 
+Next request → Server check session → Access allow

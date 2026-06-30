@@ -1,0 +1,98 @@
+🔷 1. What are Cookies?
+
+🔸 Simple Definition
+👉 Cookie = small data stored in user’s browser
+
+🔸 Example
+from flask import make_response
+
+@app.route('/')
+def home():
+    res = make_response("Hello")
+    res.set_cookie('username', 'Majid')
+    return res
+
+👉 Browser me store hoga:
+username = Majid
+
+
+🔸 Key Points
+✔ Client-side storage (browser me store hota hai)
+✔ Small size data
+✔ Easily readable (less secure)
+✔ Automatically server ko send hota hai har request me
+
+
+🔸 Real-Life Use
+👉 Remember username
+👉 Save user preferences
+👉 Track user activity
+
+
+🔷 2. What are Sessions?
+
+🔸 Simple Definition
+👉 Session = data stored on server side
+👉 Browser me sirf ek session ID store hota hai (cookie ke through)
+
+🔸 Example (Flask)
+from flask import session
+
+app.secret_key = "secret123"
+
+@app.route('/login')
+def login():
+    session['user'] = "Majid"
+    return "Logged in"
+
+@app.route('/dashboard')
+def dashboard():
+    return "Welcome " + session['user']
+
+🔸 Key Points
+✔ Server-side storage (secure)
+✔ Uses cookie internally (session ID)
+✔ Used for login system
+✔ Needs secret_key
+
+🔷 4. Flow Understanding (VERY IMPORTANT 🔥)
+Cookies Flow:
+Server → Cookie set → Browser store → Next request me send
+
+Session Flow:
+User login → Session created → Session ID cookie me store → Server pe data saved
+
+🔷 5. Real Login Example (Best Use Case ⭐)
+from flask import Flask, session, redirect, url_for
+
+app = Flask(__name__)
+app.secret_key = "secret123"
+
+@app.route('/login')
+def login():
+    session['user'] = "admin"
+    return redirect(url_for('dashboard'))
+
+@app.route('/dashboard')
+def dashboard():
+    if 'user' in session:
+        return "Welcome " + session['user']
+    return "Please login first"
+
+
+🔷 6. Logout (Important ⭐)
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return "Logged out"
+
+
+🔷 7. When to Use What?
+👉 Use Cookies:
+Theme (dark/light)
+Language settings
+
+👉 Use Sessions:
+Login system
+Authentication
+User data

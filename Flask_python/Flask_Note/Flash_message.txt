@@ -1,0 +1,98 @@
+🔷 12. Flash Messages in Flask
+
+🔸 1. What are Flash Messages?
+👉 Flash messages are:
+✔ Temporary messages shown to user
+✔ Used for success, error, warning
+
+Example:
+✅ Login successful
+❌ Invalid password
+⚠️ Please fill all fields
+
+
+🔸 2. Why Use Flash Messages?
+👉 Instead of returning plain text:
+return "Login Failed"
+
+👉 We show message on the same page:
+✔ Better UI
+✔ Professional design
+
+
+🔸 3. Required Imports
+from flask import Flask, flash, redirect, url_for, render_template
+
+
+🔸 4. Important Setup (VERY IMPORTANT ⭐)
+app = Flask(__name__)
+app.secret_key = "secret123"
+
+👉 secret_key is required for flash messages
+
+
+🔸 5. Basic Example
+Flask Code:
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        if username == "admin" and password == "1234":
+            flash("Login Successful")
+            return redirect(url_for('dashboard'))
+        else:
+            flash("Invalid Credentials")
+
+    return render_template('login.html')
+
+
+🔸 6. Display Flash Messages in HTML
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+👉 This shows messages in UI
+
+
+🔸 7. With Categories (Professional Way ⭐)
+Flask:
+flash("Login Successful", "success")
+flash("Invalid Password", "error")
+
+HTML:
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, msg in messages %}
+        <p class="{{ category }}">{{ msg }}</p>
+    {% endfor %}
+{% endwith %}
+
+
+CSS Example:
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+
+🔸 8. Real-Life Flow
+User submits form
+Flask checks data
+Flash message created
+Page reloads
+Message displayed
+
+
+🔸 9. Important Points ⭐
+✔ Message stored temporarily (one request)
+✔ Needs secret_key
+✔ Used with redirect()
+✔ Improves user experience

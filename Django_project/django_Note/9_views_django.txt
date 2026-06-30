@@ -1,0 +1,132 @@
+🔷 Views in Django
+🔶 What is a View?
+
+👉 A View is a Python function (or class) that:
+
+📌 Receives request → processes logic → returns response
+
+🔷 Simple Definition (Exam Point)
+
+View is the business logic layer of Django (MVT architecture).
+
+🔷 1. Basic View Example
+
+👉 In views.py:
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello, Welcome to Django!")
+
+🔶 Explanation:
+request → Data coming from user
+HttpResponse() → Sends response back
+🔷 2. Connecting View with URL
+
+👉 In urls.py:
+
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+    path('', views.home),
+]
+
+🔷 Flow (VERY IMPORTANT)
+User → URL → View → Response
+
+🔷 3. Types of Views
+🔸 (A) Function-Based View (FBV)
+
+👉 Simple and beginner-friendly
+
+def about(request):
+    return HttpResponse("This is About Page")
+
+
+✔ Easy to understand
+✔ Used in small projects
+
+🔸 (B) Class-Based View (CBV)
+
+👉 Advanced approach
+
+from django.views import View
+from django.http import HttpResponse
+
+class HomeView(View):
+    def get(self, request):
+        return HttpResponse("Hello from Class-Based View")
+
+
+✔ Reusable
+✔ Better for large projects
+
+🔷 4. Returning HTML Template
+
+👉 Instead of plain text, we return HTML
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
+
+🔶 Passing Data to Template
+def home(request):
+    data = {
+        'name': 'Majid'
+    }
+    return render(request, 'home.html', data)
+
+
+👉 In HTML:
+
+<h1>Hello {{ name }}</h1>
+
+🔷 5. Handling User Request (GET & POST)
+🔸 GET Request
+def home(request):
+    name = request.GET.get('name')
+    return HttpResponse(name)
+
+
+👉 URL:
+
+/?name=Majid
+
+🔸 POST Request
+def form(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        return HttpResponse(username)
+
+    return render(request, 'form.html')
+
+🔷 6. Real-Life Analogy
+
+Think View as:
+
+🧠 Brain of application
+
+Takes input
+Processes
+Gives output
+🔷 7. Common Mistakes
+
+❌ Forgetting to return response
+❌ Not connecting view in urls.py
+❌ Wrong template path
+
+🔷 8. Important Points for Exam
+
+✔ View handles logic
+✔ Receives request object
+✔ Returns HttpResponse or Template
+✔ Can be function or class
+
+🔷 Final Summary
+View = Logic layer
+Connects URL and Template
+Processes user data
+🔷 Full Flow (Revise)
+User → URL → View → Model → Template → Response

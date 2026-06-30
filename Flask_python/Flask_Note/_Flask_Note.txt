@@ -1,0 +1,181 @@
+🔷 1. Introduction to Flask
+
+👉 Flask is a micro web framework in Python
+👉 It is used to:
+
+Build web applications
+Create APIs
+🔹 Features:
+Lightweight and simple
+Easy to learn
+Flexible and customizable
+🔷 2. Installation
+pip install flask
+
+🔷 3. Basic Flask Application
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Hello World"
+
+app.run(debug=True)
+
+🔍 Explanation:
+Flask(__name__) → creates the app
+@app.route('/') → defines URL route
+home() → function that returns response
+debug=True → shows errors and auto reloads
+🔷 4. Routing
+
+👉 Routing connects a URL to a function
+
+@app.route('/about')
+def about():
+    return "About Page"
+
+
+👉 Access in browser:
+
+http://127.0.0.1:5000/about
+
+🔷 5. Dynamic Routing
+@app.route('/user/<name>')
+def user(name):
+    return f"Hello {name}"
+
+
+👉 Example:
+
+/user/majid → Hello majid
+
+🔷 6. HTTP Methods (GET & POST)
+🔹 GET:
+Used to fetch data
+Data is visible in URL
+🔹 POST:
+Used to send data
+More secure than GET
+from flask import request
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return "Form Submitted"
+    return "Login Page"
+
+🔷 7. Templates (Using HTML)
+
+👉 Create a folder named templates
+
+🔹 Python Code:
+from flask import render_template
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+🔹 HTML (templates/index.html):
+<h1>Welcome</h1>
+
+🔷 8. Jinja2 Template Engine
+
+👉 Used to send dynamic data to HTML
+
+@app.route('/name/<name>')
+def name(name):
+    return render_template('index.html', n=name)
+
+<h1>Hello {{ n }}</h1>
+
+🔷 9. Form Handling
+🔹 HTML Form:
+<form method="POST">
+    <input type="text" name="username">
+    <input type="submit">
+</form>
+
+🔹 Flask Code:
+from flask import request
+
+@app.route('/', methods=['GET','POST'])
+def home():
+    if request.method == 'POST':
+        user = request.form['username']
+        return user
+    return render_template('index.html')
+
+🔷 10. Static Files
+
+👉 For CSS, JavaScript, Images → use static folder
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+🔷 11. Redirect & URL Handling
+from flask import redirect, url_for
+
+@app.route('/login')
+def login():
+    return redirect(url_for('home'))
+
+🔷 12. Flash Messages
+
+👉 Used to display messages to user
+
+from flask import flash
+
+flash("Login Successful")
+
+🔷 13. Project Structure
+project/
+│
+├── app.py
+├── templates/
+│   └── index.html
+├── static/
+│   └── style.css
+
+🔷 14. Virtual Environment
+python -m venv env
+.\env\Scripts\activate
+
+🔷 15. Debug Mode
+app.run(debug=True)
+
+
+👉 Benefits:
+
+Auto reload
+Detailed error messages
+🔥 Mini Project: Login System
+from flask import Flask, request
+
+app = Flask(__name__)
+
+USER = {
+    "username": "admin",
+    "password": "1234"
+}
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        u = request.form['username']
+        p = request.form['password']
+
+        if u == USER["username"] and p == USER["password"]:
+            return "Login Successful"
+        else:
+            return "Invalid User"
+
+    return '''
+    <form method="POST">
+        <input name="username"><br>
+        <input name="password"><br>
+        <input type="submit">
+    </form>
+    '''
+
+app.run(debug=True)

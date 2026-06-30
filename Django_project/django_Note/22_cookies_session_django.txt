@@ -1,0 +1,114 @@
+🔷 Sessions & Cookies in Django
+🔶 What are Sessions & Cookies?
+
+👉 Both are used to store user data between requests
+
+📌 Because HTTP is stateless (it doesn’t remember users)
+
+🔷 Simple Definition (Exam Point)
+Cookie → Stored in browser (client-side)
+Session → Stored on server (server-side)
+🔷 1. Cookies
+🔶 What is a Cookie?
+
+👉 Small piece of data stored in the user’s browser
+
+🔶 Example Use:
+
+✔ Remember username
+✔ Save preferences (theme, language)
+
+🔶 Create Cookie in Django
+def set_cookie(request):
+    response = HttpResponse("Cookie Set")
+    response.set_cookie('username', 'Majid')
+    return response
+
+🔶 Get Cookie
+def get_cookie(request):
+    name = request.COOKIES.get('username')
+    return HttpResponse(name)
+
+🔶 Delete Cookie
+response.delete_cookie('username')
+
+🔶 Key Points:
+
+✔ Stored in browser
+✔ Limited size
+✔ Less secure
+
+🔷 2. Sessions
+🔶 What is a Session?
+
+👉 Data stored on the server side
+
+👉 Only session ID is stored in browser (cookie)
+
+🔶 Example Use:
+
+✔ Login system
+✔ Shopping cart
+✔ User activity tracking
+
+🔶 Create Session
+def set_session(request):
+    request.session['username'] = 'Majid'
+    return HttpResponse("Session Set")
+
+🔶 Get Session
+def get_session(request):
+    name = request.session.get('username')
+    return HttpResponse(name)
+
+🔶 Delete Session
+def delete_session(request):
+    del request.session['username']
+    return HttpResponse("Session Deleted")
+
+🔷 3. Key Difference (Very Important 🔥)
+Feature	Cookies	Sessions
+Storage	Browser	Server
+Security	❌ Low	✔ High
+Size	Small	Large
+Speed	Fast	Slightly slower
+🔷 4. How They Work Together
+
+👉 Django uses both:
+
+Browser → Cookie (session ID)
+Server → Session data
+
+🔷 5. Real-Life Analogy
+
+👉 Think like this:
+
+Cookie = 🍪 Slip in your pocket
+Session = 🗄️ Data stored in office
+🔷 6. In Authentication System
+
+👉 When user logs in:
+
+✔ Session is created
+✔ Session ID stored in cookie
+✔ Server remembers user
+
+🔷 7. Common Mistakes
+
+❌ Storing sensitive data in cookies
+❌ Forgetting to delete session on logout
+❌ Misusing session for large data
+
+🔷 8. Important Exam Points
+
+✔ Cookies = client-side
+✔ Sessions = server-side
+✔ Django uses both together
+✔ Sessions are more secure
+
+🔷 Final Summary
+Cookies store small data in browser
+Sessions store secure data on server
+Used for login, tracking, personalization
+🔷 Full Flow (Revise)
+User → Login → Session Created → Cookie Stores ID → Server Tracks User

@@ -1,0 +1,125 @@
+🔸 1. What are Templates?
+👉 Templates allow Flask to send HTML pages instead of plain text.
+
+Instead of:
+return "Hello"
+
+We use:
+return render_template('index.html')
+
+✔ This makes your app look like a real website.
+
+🔸 2. Why Templates?
+
+Without templates:
+❌ Only text output
+
+With templates:
+✔ HTML + CSS + UI
+✔ Dynamic content
+✔ Professional web app
+
+🔸 3. Folder Structure (VERY IMPORTANT ⭐)
+
+Flask requires a special folder:
+
+project/
+│
+├── app.py
+└── templates/
+    └── index.html
+
+👉 Folder name must be:
+✔ templates
+
+🔸 4. Basic Example
+✅ app.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+✅ templates/index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome Student</h1>
+</body>
+</html>
+
+👉 Output: Browser shows HTML page instead of text
+
+
+🔸 5. Passing Data to Template
+@app.route('/')
+def home():
+    return render_template('index.html', name="Majid")
+
+HTML:
+<h1>Hello {{ name }}</h1>
+
+👉 Output:
+Hello Majid
+
+🔸 6. Jinja2 Template Engine
+Flask uses Jinja2.
+
+👉 Special syntax:
+Syntax	Meaning
+{{ }}	Print variable
+{% %}	Logic (if, loop)
+
+🔸 7. If Condition in Template
+{% if name == "Majid" %}
+    <h2>Welcome Admin</h2>
+{% else %}
+    <h2>Welcome User</h2>
+{% endif %}
+
+🔸 8. Loop in Template
+@app.route('/')
+def home():
+    students = ["Ali", "Sara", "John"]
+    return render_template('index.html', students=students)
+
+HTML:
+<ul>
+{% for s in students %}
+    <li>{{ s }}</li>
+{% endfor %}
+</ul>
+
+
+🔸 9. Template Inheritance (Very Important ⭐)
+👉 Used for large projects
+
+Base File (base.html)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My App{% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+
+Child File (home.html)
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<h1>Welcome to Home Page</h1>
+{% endblock %}

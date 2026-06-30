@@ -1,0 +1,112 @@
+🔷 8. Jinja2 Template Engine
+
+🔸 1. What is Jinja2?
+👉 Jinja2 is a template engine used by Flask.
+Meaning:
+It allows you to:
+✔ Insert Python data into HTML
+✔ Use logic (if, loop) inside HTML
+👉 So your HTML becomes dynamic, not static.
+
+🔸 2. Why Jinja2 is Needed?
+Normal HTML:
+<h1>Hello</h1>
+
+Dynamic HTML (Jinja2):
+<h1>Hello {{ name }}</h1>
+
+👉 Output changes based on data from Flask.
+
+🔸 3. Basic Syntax (VERY IMPORTANT ⭐)
+Syntax	Use
+{{ variable }}	Print value
+{% %}	Logic (if, loop)
+{# #}	Comments
+
+
+🔸 4. Example: Passing Data
+Flask Code
+@app.route('/')
+def home():
+    return render_template('index.html', name="Majid")
+
+HTML
+<h1>Hello {{ name }}</h1>
+
+👉 Output:
+Hello Majid
+
+🔸 5. If-Else Condition
+{% if name == "Majid" %}
+    <h2>Welcome Admin</h2>
+{% else %}
+    <h2>Welcome User</h2>
+{% endif %}
+
+👉 Works like Python if-else
+
+🔸 6. For Loop
+Flask:
+students = ["Ali", "Sara", "John"]
+
+HTML:
+<ul>
+{% for s in students %}
+    <li>{{ s }}</li>
+{% endfor %}
+</ul>
+
+👉 Output:
+Ali
+Sara
+John
+
+🔸 7. Using Dictionaries
+Flask:
+student = {"name": "Ali", "age": 20}
+
+HTML:
+<p>Name: {{ student.name }}</p>
+<p>Age: {{ student.age }}</p>
+
+
+🔸 8. Filters (Important ⭐)
+👉 Used to modify data
+{{ name | upper }}
+{{ name | lower }}
+{{ name | title }}
+
+👉 Example:
+majid → MAJID
+
+🔸 9. Template Inheritance (Revision)
+base.html
+{% block content %}{% endblock %}
+
+child.html
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Hello</h1>
+{% endblock %}
+
+🔸 10. Comments in Jinja2
+{# This is a comment #}
+
+👉 Not visible in browser
+
+🔸 11. Real Example (Mini App)
+Flask:
+@app.route('/')
+def home():
+    students = ["Ali", "Sara"]
+    return render_template('index.html', students=students)
+
+HTML:
+<h1>Student List</h1>
+
+<ul>
+{% for s in students %}
+    <li>{{ s }}</li>
+{% endfor %}
+</ul>

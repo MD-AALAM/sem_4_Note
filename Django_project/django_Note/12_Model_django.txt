@@ -1,0 +1,149 @@
+🔷 Models in Django
+🔶 What is a Model?
+
+👉 A Model defines the structure of your database.
+
+📌 It represents tables, fields (columns), and relationships.
+
+🔷 Simple Definition (Exam Point)
+
+Model is the data layer in Django (MVT architecture) used to interact with the database.
+
+🔷 1. Real-Life Understanding
+
+Think of Model as:
+
+📊 Excel Sheet / Database Table
+
+ID	Name	Age
+1	Majid	20
+🔷 2. Create a Model
+
+👉 In models.py:
+
+from django.db import models
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+🔶 Explanation:
+Student → Table name
+name, age → Columns
+CharField, IntegerField → Data types
+🔷 3. Common Field Types
+Field	Use
+CharField	Text
+IntegerField	Numbers
+EmailField	Email
+DateField	Date
+BooleanField	True/False
+🔷 4. Migrations (VERY IMPORTANT 🔥)
+
+👉 After creating model, run:
+
+python manage.py makemigrations
+python manage.py migrate
+
+🔶 What happens?
+makemigrations → Creates migration file
+migrate → Applies changes to database
+🔷 5. Register Model in Admin
+
+👉 In admin.py:
+
+from .models import Student
+
+admin.site.register(Student)
+
+🔷 6. Create Superuser
+python manage.py createsuperuser
+
+
+👉 Enter:
+
+Username
+Email
+Password
+🔶 Access Admin Panel
+
+👉 Open:
+
+http://127.0.0.1:8000/admin/
+
+
+✅ You can now:
+
+Add data
+Edit data
+Delete data
+🔷 7. Use Model in View
+
+👉 In views.py:
+
+from .models import Student
+from django.shortcuts import render
+
+def home(request):
+    students = Student.objects.all()
+    return render(request, 'home.html', {'students': students})
+
+🔶 Show in Template
+{% for student in students %}
+    <p>{{ student.name }} - {{ student.age }}</p>
+{% endfor %}
+
+🔷 8. Model Methods (Advanced)
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+👉 Helps display name in admin panel
+
+🔷 9. Database Operations (CRUD)
+🔸 Create
+Student.objects.create(name="Majid", age=20)
+
+🔸 Read
+Student.objects.all()
+
+🔸 Update
+student = Student.objects.get(id=1)
+student.name = "Ali"
+student.save()
+
+🔸 Delete
+student.delete()
+
+🔷 10. Real-Life Analogy
+
+Think Model as:
+
+🗄️ Database Manager
+
+Stores data
+Retrieves data
+Updates data
+🔷 Common Mistakes
+
+❌ Forget to run migrations
+❌ Not registering model in admin
+❌ Wrong field type
+
+🔷 Important Exam Points
+
+✔ Model = Database structure
+✔ Uses class
+✔ Requires migrations
+✔ Connected with admin
+
+🔷 Final Summary
+Model defines database
+Fields = columns
+Migrations apply changes
+Used in views
+🔷 Full Flow (Revise)
+User → URL → View → Model → Database → Template → Response
