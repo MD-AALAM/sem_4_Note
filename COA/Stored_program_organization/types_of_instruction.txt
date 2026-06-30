@@ -1,0 +1,40 @@
+Types of Computer Instructions
+1. Memory Reference Instructions
+
+Access data from memory
+
+Use address field
+
+Examples:
+
+ADD
+
+LOAD
+
+STORE
+
+AND
+
+2. Register Reference Instructions
+
+Operate directly on CPU registers
+
+No memory address required
+
+Examples:
+
+CLEAR AC
+
+COMPLEMENT AC
+
+SHIFT LEFT
+
+3. Input–Output Instructions
+
+Transfer data between CPU and I/O devices
+
+Examples:
+
+IN
+
+OUT

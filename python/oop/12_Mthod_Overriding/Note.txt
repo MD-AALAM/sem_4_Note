@@ -1,0 +1,14 @@
+🔷 1️⃣ What is Method Overriding?
+✅ Definition (Exam Point of View)
+
+Method overriding is a feature of inheritance in which the child class provides a specific implementation of a method that is already defined in its parent class.
+
+🔷 2️⃣ Why Do We Need Method Overriding?
+
+When:
+
+Parent class has a method
+
+Child class wants to change its behavior
+
+Instead of creating a new method name, we override the same method.

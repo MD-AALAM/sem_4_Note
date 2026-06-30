@@ -1,0 +1,12 @@
+📌 What is self in Python?
+
+👉 self represents the current object (instance) of the class.
+👉 It is used to access instance variables and methods inside a class.
+
+✅ Why Do We Need self?
+
+Because each object has its own data.
+
+Without self, Python will not know:
+
+Which object's variable you are talking about.

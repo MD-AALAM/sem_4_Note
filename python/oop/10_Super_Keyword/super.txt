@@ -1,0 +1,17 @@
+🔷 What is super() in Python?
+
+super() is used to call methods or constructors of the parent class from the child class.
+
+It is mainly used in inheritance.
+
+1️⃣ Why do we need super()?
+
+When a child class inherits a parent class, sometimes we want:
+
+To use parent class constructor
+
+To use parent class method
+
+To extend parent functionality (not replace it)
+
+For that, we use super().

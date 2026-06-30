@@ -1,0 +1,58 @@
+🔸Programs and Processes – Role of Interrupts in Process State Transitions
+
+Interrupts
+->An interrupt is the automatic transfer of CPU control to a special routine when a hardware or internal event occurs while a program is running.
+
+It happens asynchronously, meaning it can occur at any time.
+The event that causes it is called a trigger.
+
+🔸Types of Interrupt Triggers
+1.External Hardware Event
+Example: Keyboard input, disk completion, printer ready.
+Device changes from busy state to ready state.
+2.Internal Event
+Example: Divide-by-zero error, timer expiry, invalid instructio
+
+🔹How Interrupts Work
+->When a hardware device needs service:
+.It sets an interrupt request signal (trigger flag).
+.CPU pauses the currently running program.
+.CPU saves the current process state.
+.CPU transfers control to an Interrupt Service Routine (ISR).
+.After servicing, CPU restores previous state and resumes execution.
+
+🔷 Diagram Explanation (Your Image)
+🔸 Left Side → Programmed I/O (Busy Waiting)
+CPU continuously checks:
+Status1 → Status2 → Status3
+If device is busy, CPU keeps waiting
+If ready, data transfer occurs
+
+👉 ❌ Disadvantage: CPU time is wasted
+
+🔸 Right Side → Interrupt Driven I/O
+Device sends interrupt signal when ready
+CPU:
+Handles Input/Output data1, data2, data3
+Returns back after each interrupt
+
+👉 ✅ Advantage: CPU does not waste time
+
+🔷 Role of Interrupts in Process State Transitions
+Interrupts cause change in execution flow
+When an interrupt occurs:
+A new thread (ISR) is created
+Called background thread
+🔸 Key Points:
+Each interrupt has its own execution thread
+Threads share system resources
+After ISR execution → thread is destroyed
+
+🔹 Process vs Thread (Short)
+Feature	Process	Thread
+Resources	Separate	Shared
+Communication	Difficult	Easy
+Goal	Independent	Cooperative
+🔹 Conclusion
+Software interrupts and exceptions help the system handle events and errors efficiently
+Interrupt-driven I/O is better than programmed I/O because it improves CPU utilization

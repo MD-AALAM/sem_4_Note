@@ -1,0 +1,86 @@
+
+Types of Control Organization
+1. Hardwired Control Organization
+
+Control signals are generated using hardware logic circuits
+
+Uses:
+
+Flip-flops
+
+Gates
+
+Decoders
+
+Characteristics:
+
+Very fast
+
+Fixed design
+
+Difficult to modify
+
+Used in:
+
+RISC processors
+
+Advantages:
+
+High speed
+
+Efficient performance
+
+Disadvantages:
+
+Complex hardware
+
+Not flexible
+
+2. Microprogrammed Control Organization
+
+Control signals are generated using microinstructions
+
+Stored in Control Memory
+
+Components:
+
+Control Memory
+
+Microinstruction Register
+
+Microprogram Counter
+
+Characteristics:
+
+Flexible design
+
+Easy to modify
+
+Used in:
+
+CISC processors
+
+Advantages:
+
+Easy to design
+
+Easy to update
+
+Disadvantages:
+
+Slower than hardwired
+
+Requires extra memory
+
+
+--->>The CU plays a major role in the Instruction Cycle, which consists of:
+
+Fetch
+
+Decode
+
+Execute
+
+Store Result
+
+This cycle repeats continuously while the computer is running.

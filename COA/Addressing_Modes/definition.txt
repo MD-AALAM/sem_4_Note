@@ -1,0 +1,19 @@
+1️⃣ What are Addressing Modes?
+📌 Definition:
+
+Addressing Modes are the different ways in which an instruction specifies the location of its operand (data).
+
+In simple words:
+
+👉 Addressing mode tells the CPU where to find the data required for execution.
+
+These modes are interpreted by the Control Unit of the Central Processing Unit during the Decode phase of the instruction cycle.
+
+2️⃣ Why Are Addressing Modes Needed?
+
+Addressing modes help in:
+
+✔ Reducing instruction size
+✔ Increasing flexibility
+✔ Improving execution efficiency
+✔ Supporting complex data structures

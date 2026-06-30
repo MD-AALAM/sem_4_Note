@@ -1,0 +1,23 @@
+Why study Computer Organization and Architecture? 📘
+
+Computer Organization and Architecture padhna important hai kyunki ye hume computer system ke internal working ko samjhata hai.
+
+Reasons (exam-oriented points):
+
+1.Understanding how a computer works
+Ye subject batata hai ki CPU, memory, registers aur I/O devices kaise milkar kaam karte hain.
+
+2.Better programming skills
+Jab hume hardware ka idea hota hai, to hum efficient programs likh paate hain (better speed & memory usage).
+
+3.Performance improvement
+Architecture samajhne se pata chalta hai ki execution time, memory access, aur processing speed kaise optimize hoti hai.
+
+4.Hardware–software interaction
+Ye subject explain karta hai ki software instructions hardware ke through kaise execute hoti hain.
+
+5.Foundation for advanced subjects
+Operating System, Compiler Design, Embedded Systems jaise subjects ke liye ye base hai.
+
+6.Helps in system design and troubleshooting
+Computer faults, performance issues, aur system upgrades samajhna easy ho jaata hai.

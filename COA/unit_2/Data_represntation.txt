@@ -1,0 +1,9 @@
+🎯 Final Conceptual Understanding
+
+Computer stores everything in binary form.
+
+Numbers → Signed representation (mostly 2’s complement)
+
+Real numbers → Fixed or Floating point
+
+Characters → ASCII / Unicode

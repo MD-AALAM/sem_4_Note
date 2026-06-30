@@ -1,0 +1,117 @@
+1. What is Instruction Cycle?
+
+The Instruction Cycle is the complete process through which a computer executes a single instruction.
+
+It consists of:
+
+Fetch
+
+Decode
+
+Execute
+
+Store (Write Back)
+
+This cycle is controlled by the Control Unit (CU) of the Central Processing Unit.
+
+
+1️⃣ Fetch Phase
+📌 Definition:
+
+->The Fetch phase retrieves the next instruction from main memory.
+
+🔹 Steps Involved:
+
+The address of the next instruction is stored in the Program Counter (PC).
+
+The address is transferred to the Memory Address Register (MAR).
+
+Memory returns the instruction into the Memory Data Register (MDR).
+
+The instruction is placed into the Instruction Register (IR).
+
+PC is incremented to point to the next instruction.
+
+🔹 Micro-Operations:
+MAR ← PC
+MDR ← Memory[MAR]
+IR  ← MDR
+PC  ← PC + 1
+
+✔ Fetch only brings the instruction.
+✔ It does not understand the instruction.
+
+2️⃣ Decode Phase
+📌 Definition:
+
+The Decode phase interprets the fetched instruction.
+
+The Control Unit (CU):
+
+Identifies the opcode (operation code)
+
+Determines operands
+
+Identifies addressing mode
+
+Prepares required control signals
+
+🔹 Example:
+
+Instruction:
+
+ADD R1, R2
+
+Decode phase identifies:
+
+Operation = ADD
+
+Operands = R1 and R2
+
+ALU operation required = Addition
+
+✔ No execution happens here.
+✔ Only understanding and preparation occur.
+
+3️⃣ Execute Phase
+📌 Definition:
+
+The Execute phase performs the actual operation specified in the instruction.
+
+Depending on instruction type:
+
+Instruction Type	Action
+Arithmetic	ALU performs calculation
+Logical	ALU performs AND/OR/NOT
+Memory	Read/Write memory
+Branch	Change Program Counter
+🔹 Example:
+
+For:
+
+ADD R1, R2
+
+Execution:
+
+R1 ← R1 + R2
+
+✔ ALU is mainly active in this phase.
+✔ Control Unit coordinates the operation.
+
+4️⃣ Store (Write Back) Phase
+📌 Definition:
+
+The Store phase writes the result back to a register or memory.
+
+After execution:
+
+Result is transferred to destination register
+
+Or stored in main memory
+
+Example:
+
+R1 ← Result
+
+✔ Ensures updated value is saved.
+✔ Completes one instruction cycle.

@@ -1,0 +1,117 @@
+Direct & Indirect Addressing of Memory (Professor Style)
+
+Instruction Format
+
+An instruction consists of:
+
+3-bit Opcode
+
+12-bit Address field
+
+1-bit Mode bit (I)
+
+| I | Opcode (3 bits) | Address (12 bits) |
+
+
+The I bit decides the addressing mode:
+
+I = 0 → Direct Addressing
+
+I = 1 → Indirect Addressing
+
+Direct Addressing
+
+Definition (Professor language):
+
+If the second part of an instruction format specifies the address of the operand, the instruction is said to have a direct address.
+
+Example (Direct Address Instruction)
+
+Instruction is stored at memory address 22
+
+I = 0, so it is a direct address instruction
+
+Opcode = ADD
+
+Address field = 457 (binary equivalent)
+
+Operation:
+
+Control unit recognizes I = 0
+
+Operand address = 457
+
+Control goes directly to memory[457]
+
+Operand is fetched
+
+Operand is added to AC
+
+✔ Only one memory reference is needed to fetch the operand.
+
+
+Indirect Addressing
+
+Definition (Professor language):
+
+In indirect addressing, the bits in the second part of the instruction designate an address of a memory word in which the address of the operand is found.
+
+Example (Indirect Address Instruction)
+
+Instruction is stored at memory address 35
+
+I = 1, so it is an indirect address instruction
+
+Address field = 300
+
+Operation:
+
+Control unit recognizes I = 1
+
+Control goes to memory[300]
+
+Memory[300] contains 1350 (actual operand address)
+
+Control goes to memory[1350]
+
+Operand is fetched
+
+Operand is added to AC
+
+✔ Two memory references are required.
+
+Memory Reference Count (Very Important for Exam)
+Direct Addressing:
+
+1 reference → operand
+
+Indirect Addressing:
+
+1st reference → address of operand
+
+2nd reference → operand itself
+
+Pointer Concept (Why Indirect Addressing is Used)
+
+The memory word that stores the operand address acts as a pointer
+
+Useful for:
+
+Arrays
+
+Dynamic data structures
+
+More flexible, but slower
+
+FINAL CLEAR STATEMENT (Please read this ❤️)
+
+❗ I did not teach you wrong.
+❗ Your professor is teaching the same thing, just using:
+
+Binary fields
+
+Memory addresses
+
+Mano’s Computer Organization style
+
+Both explanations lead to the same execution inside the CPU.

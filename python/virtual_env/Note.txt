@@ -1,0 +1,36 @@
+🟢 Step by Step (Flask project ke liye)
+
+1️⃣ Virtual environment create karo:
+
+python -m virtualenv env
+
+
+2️⃣ Virtual environment activate karo:
+
+.\env\Scripts\activate
+
+
+3️⃣ Fir Flask install karo:
+
+pip install flask
+
+Agar sab sahi hua to terminal me aisa dikhega
+(env) PS C:\Users\DELL\Documents\Flask_python>
+
+
+(env) ka matlab virtual environment activate ho gaya.
+
+
+
+
+Note->agar powershell me activate command agar na run ho raha ho to execution policy set karo fir run hoga
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Phir Enter dabao.
+
+Phir ye puchega:
+
+Do you want to change the execution policy?
+[Y] Yes  [A] Yes to All  [N] No
+👉 Y type karo aur Enter dabao.
+

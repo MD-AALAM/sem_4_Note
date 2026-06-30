@@ -1,0 +1,45 @@
+🔷 I/O Interface (Short Answer)
+I/O Interface is a method used to transfer data between internal storage (CPU & memory) and external I/O devices.
+Peripheral devices require special communication links to interact with the CPU.
+Special hardware components (I/O interface units) are placed between CPU and peripherals to control and manage data transfer.
+These units provide a communication link between processor bus and devices.
+
+🔹 Why needed?
+Handles speed difference
+Converts data formats
+Provides proper communication
+
+🔹 I/O Bus
+
+The communication between CPU and I/O devices takes place through the I/O bus, which consists of:
+
+Data lines → carry actual data
+Address lines → specify the device
+Control lines → carry commands (read/write)
+
+Working:
+The CPU places a device address on the address lines
+The corresponding interface decodes the address
+Control signals are interpreted and sent to the device
+Data transfer takes place through data lines
+The interface synchronizes and supervises the transfer
+
+Each peripheral has its own controller (e.g., printer controller manages printing operations).
+
+s
+🔹 I/O Commands
+
+The CPU communicates with devices using control lines called I/O commands:
+
+Control Command → Activates the device and specifies the operation
+Status Command → Checks the status of the device
+Data Output Command → Transfers data from CPU to device
+Data Input Command → Transfers data from device to CPU
+
+🔹 I/O Bus vs Memory Bus
+
+There are three ways to organize communication:
+
+Separate buses for memory and I/O
+Common bus with separate control lines
+Common bus with common control lines

@@ -1,0 +1,222 @@
+📘 Addressing Modes (COA)
+🔹 What is an Addressing Mode?
+
+In a computer system, an instruction consists of:
+
+Opcode (operation to perform)
+
+Operand (data on which operation is performed)
+
+👉 Addressing Mode tells the CPU how to find the operand.
+
+In simple words:
+
+Addressing mode = Method used to access the operand.
+
+1️⃣ Implied Mode
+🔹 Definition:
+
+In this mode, the operand is implied (automatically understood) by the instruction.
+No explicit operand is mentioned.
+
+🔹 Example:
+CMA      ; Complement Accumulator
+CLC      ; Clear Carry
+
+Here, the CPU automatically knows the operand (Accumulator or Flag).
+
+🔹 Advantage:
+
+Instruction size is small
+
+Faster execution
+
+2️⃣ Immediate Mode
+🔹 Definition:
+
+The operand value is directly present inside the instruction.
+
+🔹 Example:
+MOV R1, #5
+ADD A, #10
+
+Here #5 and #10 are immediate values.
+
+🔹 Effective Address:
+
+No memory access required (operand is inside instruction).
+
+🔹 Advantage:
+
+Very fast
+
+No extra memory reference
+
+3️⃣ Register Mode
+🔹 Definition:
+
+The operand is stored in a CPU register.
+
+🔹 Example:
+ADD R1, R2
+
+Here operand is inside register R2.
+
+🔹 Effective Address:
+
+Register itself holds data.
+
+🔹 Advantage:
+
+Faster than memory access
+
+Efficient execution
+
+4️⃣ Register Indirect Mode
+🔹 Definition:
+
+Register contains the address of the operand, not the operand itself.
+
+🔹 Example:
+MOV A, (R1)
+
+Here:
+
+R1 contains memory address
+
+Operand is stored in that memory location
+
+🔹 Effective Address:
+
+EA = (R1)
+
+🔹 Important:
+
+One extra memory access is required.
+
+5️⃣ Autoincrement / Autodecrement Mode
+🔹 Definition:
+
+After accessing operand through register indirect mode:
+
+Register is automatically incremented (Autoincrement)
+
+OR automatically decremented (Autodecrement)
+
+🔹 Example:
+MOV A, (R1)+   ; Autoincrement
+MOV A, -(R1)   ; Autodecrement
+🔹 Use:
+
+Array traversal
+
+Stack operations
+
+6️⃣ Direct Address Mode
+🔹 Definition:
+
+The instruction contains the direct memory address of the operand.
+
+🔹 Example:
+LOAD A, 5000
+
+Here:
+
+Operand is at memory location 5000
+
+🔹 Effective Address:
+
+EA = Address field of instruction
+
+🔹 Disadvantage:
+
+Limited address range
+
+Slower than register mode
+
+7️⃣ Indirect Address Mode
+🔹 Definition:
+
+Instruction contains address of a memory location,
+and that memory location contains the actual address of operand.
+
+🔹 Example:
+LOAD A, (5000)
+
+Here:
+
+5000 → contains another address
+
+That address → contains actual operand
+
+🔹 Effective Address:
+
+EA = (Address field)
+
+🔹 Important:
+
+Two memory accesses required.
+
+8️⃣ Relative Addressing Mode
+🔹 Definition:
+
+Effective address is calculated using:
+
+𝐸𝐴=𝑃𝐶+𝐴𝑑𝑑𝑟𝑒𝑠𝑠_𝑓𝑖𝑒𝑙𝑑
+EA=PC+Address_field
+
+Where:
+
+PC = Program Counter
+
+🔹 Used in:
+
+Branch instructions
+
+Jump instructions
+
+🔹 Example:
+BEQ 20
+🔹 Advantage:
+
+Useful for loops
+
+Supports program relocation
+
+9️⃣ Indexed Addressing Mode
+🔹 Definition:
+
+Effective address is calculated using:
+
+𝐸𝐴=𝐼𝑛𝑑𝑒𝑥 𝑅𝑒𝑔𝑖𝑠𝑡𝑒𝑟+𝐴𝑑𝑑𝑟𝑒𝑠𝑠_𝑓𝑖𝑒𝑙𝑑
+EA=Index Register+Address_field
+🔹 Example:
+MOV A, 5000(R1)
+
+If:
+R1 = 10
+Then:
+EA = 5000 + 10 = 5010
+
+🔹 Use:
+
+Arrays
+
+Tables
+
+🔟 Base Register Addressing Mode
+🔹 Definition:
+
+Effective address is calculated using:
+
+𝐸𝐴=𝐵𝑎𝑠𝑒 𝑅𝑒𝑔𝑖𝑠𝑡𝑒𝑟+𝑂𝑓𝑓𝑠𝑒t
+
+EA=Base Register+Offset
+
+Very similar to indexed mode, but base register usually stores starting address of program or segment.
+
+🔹 Used in:
+
+Relocatable programs
+
+Memory management

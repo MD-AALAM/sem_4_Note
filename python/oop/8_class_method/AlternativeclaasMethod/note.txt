@@ -1,0 +1,20 @@
+🔥 Class Method as Alternative Constructor
+
+->Sometimes we want to create an object in different ways.
+
+Example:
+
+->Normal constructor → takes name and age
+
+->Alternative constructor → takes a single string "name-age"
+
+->That second way is called alternative constructor.
+
+
+🔎 Why use class method as constructor?
+
+✔ When data format is different
+✔ When reading data from file
+✔ When reading data from database
+✔ When converting string to object
+✔ Cleaner and more readable code

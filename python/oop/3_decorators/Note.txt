@@ -1,0 +1,3 @@
+-> decorator is a fucntion that takes another function as an arguments and 
+reurns a new function that modifies the behaviour of the original function.
+the new function are often referred as a "decorated" function 

@@ -1,0 +1,63 @@
+📘 NOTES: ACCESS MODIFIERS IN PYTHON
+
+Access modifiers are used to control the accessibility of variables and 
+methods in a class.
+Python does not enforce access control strictly like Java or C++.
+Instead, it follows naming conventions.
+
+TYPES OF ACCESS MODIFIERS IN PYTHON
+    
+Public
+
+Protected
+
+Private
+
+1. PUBLIC ACCESS MODIFIER
+
+Definition:
+Public members can be accessed from anywhere (inside and outside the class).
+
+Syntax:
+Normal variable or method name (no underscore)
+
+Use:
+When data needs to be freely accessible.
+
+2. PROTECTED ACCESS MODIFIER
+
+Definition:
+Protected members should be accessed only within the class and its child classes.
+
+Syntax:
+Single underscore before name
+_variable
+
+Use:
+Mainly used in inheritance.
+
+Note:
+Still accessible outside the class, but not recommended.
+
+3. PRIVATE ACCESS MODIFIER
+
+Definition:
+Private members can be accessed only inside the class.
+
+Syntax:
+Double underscore before name
+__variable
+
+Concept Used:
+Name Mangling
+
+Python internally changes:
+__var → _ClassName__var
+
+KEY POINTS
+
+• Python uses conventions, not strict rules
+• Public → everywhere
+• Protected → class + child class
+• Private → class only
+• Helps in encapsulation

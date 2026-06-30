@@ -1,0 +1,11 @@
+Stored Program Organization is a computer organization concept where both program instructions and data are stored in the same main memory. The CPU fetches instructions sequentially from memory and executes them.
+
+Each instruction is divided into two parts:
+
+Opcode – specifies the operation to be performed (ADD, SUB, LOAD, etc.)
+
+Operand – specifies the memory address of the data
+
+The processor mainly uses an Accumulator (AC) register to store intermediate data and results. The Control Unit reads the instruction, decodes it, fetches the required data from memory, and performs the operation.
+
+This organization is based on von Neumann architecture and is simple, flexible, and widely used in basic computer systems.

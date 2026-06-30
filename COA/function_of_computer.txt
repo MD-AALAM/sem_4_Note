@@ -1,0 +1,35 @@
+One-line easy trick:
+
+👉 IPOSC = Input → Processing → Output → Storage → Control
+
+
+
+1.Input
+
+User se data lena
+
+Example: Keyboard, Mouse
+
+2.Processing
+
+Data par operations perform karna (calculations, logic)
+
+Ye kaam CPU karta hai
+
+3.Storage
+
+Data aur instructions ko store karna
+
+Example: RAM, Hard Disk
+
+4.Output
+
+Processed result user ko dikhana
+
+Example: Monitor, Printer
+
+5.Control
+
+Sabhi operations ko control aur coordinate karna
+
+Ye kaam Control Unit karti hai

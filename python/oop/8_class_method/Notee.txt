@@ -1,0 +1,13 @@
+📌 What is a Class Method?
+
+A class method is a method that:
+
+->Works with the class itself
+
+->Not with a specific object
+
+->Uses cls parameter
+
+->Uses @classmethod decorator
+
+👉 cls refers to the class, not object

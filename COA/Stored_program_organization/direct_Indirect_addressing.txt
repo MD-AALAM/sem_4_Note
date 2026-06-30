@@ -1,0 +1,59 @@
+DIRECT & INDIRECT ADDRESSING OF MEMORY
+
+Addressing modes define how the CPU finds the data in memory for an instruction.
+
+DIRECT ADDRESSING
+
+In Direct Addressing, the address of the data is given directly in the instruction.
+
+HOW IT WORKS:
+
+Instruction contains the actual memory address
+
+CPU goes directly to that address to get the data
+
+EXAMPLE:
+LOAD 500
+
+LOAD → Opcode
+500 → Address of data in memory
+
+If memory location 500 contains value 20,
+then AC ← 20
+
+FEATURES:
+
+Simple and fast
+
+Only one memory access
+
+Limited by instruction address size
+
+INDIRECT ADDRESSING
+
+In Indirect Addressing, the instruction does not contain the actual data address.
+It contains the address of another memory location which stores the real address.
+
+HOW IT WORKS:
+
+CPU first goes to the given address
+
+Reads the actual address
+
+Then goes to that address to fetch data
+
+EXAMPLE:
+LOAD 400
+
+Memory[400] = 500
+Memory[500] = 20
+
+So, AC ← 20
+
+FEATURES:
+
+More flexible
+
+Allows larger address space
+
+Requires extra memory access (slower)

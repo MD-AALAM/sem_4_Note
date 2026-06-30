@@ -1,0 +1,55 @@
+🔷 Privileged and Non-Privileged Instructions
+🔹 Introduction
+
+In an Operating System, Dual Mode Operation is required to ensure security and protection from unauthorized access.
+This divides execution into:
+
+User Mode
+Kernel Mode (System Mode)
+
+Only the Operating System runs in Kernel Mode, while user programs run in User Mode.
+
+🔹 Privileged Instructions
+Instructions that can be executed only in Kernel Mode are called Privileged Instructions.
+These instructions perform critical system operations.
+
+🔸 Characteristics:
+If executed in User Mode → treated as illegal instruction
+Hardware generates a trap to the Operating System
+Used by OS for safe and controlled system operation
+🔸 Important Point:
+OS sets a timer interrupt before giving control to user programs
+Any instruction that modifies the timer is privileged
+🔸 Examples:
+I/O operations
+Halt instruction
+Disable/enable interrupts
+Set timer
+Context switching
+Memory management (clear/remove process)
+Modify device status table
+
+🔹 Non-Privileged Instructions
+Instructions that can be executed in User Mode are called Non-Privileged Instructions.
+Used by normal user programs and do not affect system control.
+🔸 Examples:
+Reading processor status
+Reading system time
+Generating trap instructions
+Printing output
+
+🔸 Key Point:
+These instructions cannot directly access hardware or critical resources
+🔹 Mode Switching
+CPU uses a mode bit:
+0 → Kernel Mode
+1 → User Mode
+Switching:
+User → Kernel → via interrupt/system call
+Kernel → User → via non-privileged instruction (return)
+🔹 Conclusion
+
+Privileged and non-privileged instructions ensure that:
+
+Critical operations are handled only by OS
+User programs run safely without harming the system

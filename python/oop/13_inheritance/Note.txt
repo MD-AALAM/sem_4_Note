@@ -1,0 +1,12 @@
+Inheritance:
+->when a class derived from another class. the child class will inherit all
+the public and protected properties and method from the parent class.
+in addition, it can have its own properties and methods, this is called as 
+inheritance.
+
+->types of inheritance.
+1.single inheritance
+2.multiple inheritance
+3.multilevel inheritance
+4.Hirarchical inheritance
+5.Hybrid inheritance

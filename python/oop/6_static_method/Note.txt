@@ -1,0 +1,30 @@
+Static method:
+->static method in python are methods that belongs to a class rather than 
+an instance of the class.they are defined using the @staticmethod decorator
+and do not have access to the instance of the class(i.e.self).they are called
+on thee class itself,not an instance of the class.static method are often used
+to create utility/helper function that dont need access to instance data.
+
+->my note:
+
+📌 What is a Static Method?
+
+A static method:
+
+Belongs to the class
+
+Does NOT use self
+
+Does NOT use cls
+
+Uses @staticmethod decorator
+
+👉 It works like a normal function, but kept inside a class for logical grouping.
+
+🎯 When Do We Use Static Method?
+
+Use static method when:
+
+✔ Logic is related to class
+✔ But does not need class or object data
+✔ Just utility/helper function

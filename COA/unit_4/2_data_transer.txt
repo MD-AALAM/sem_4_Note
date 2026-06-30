@@ -1,0 +1,94 @@
+🔷 Modes of I/O Data Transfer
+
+Data transfer between CPU (central unit) and I/O devices can be done in three modes:
+
+Programmed I/O
+Interrupt Initiated I/O
+Direct Memory Access (DMA)
+
+🔹 1. Programmed I/O
+->Programmed I/O is a method in which input and output operations are controlled by program instructions. The CPU transfers data between its registers and the peripheral device. After starting the transfer, the CPU continuously checks the device status until it is ready for the next operation.
+
+Steps involved:
+
+1.Read the status register.
+2.Check the flag bit.
+  .If the flag is 0, return to step 1.
+  .If the flag is 1, go to step 3.
+3.Read the data register.
+
+🔸 Drawback:
+CPU time is wasted
+Processor remains busy continuously monitoring
+
+🔹 2. Interrupt Initiated I/O
+Overcomes the drawback of programmed I/O.
+CPU does not wait continuously.
+🔸 Working:
+Device sends an interrupt signal when ready
+CPU:
+Stops current task
+Services I/O request
+Returns to previous task
+
+👉 This improves CPU efficiency
+
+🔹 3. Direct Memory Access (DMA)
+Fastest method of data transfer
+CPU is removed from data transfer path
+🔸 Working:
+DMA controller transfers data directly between memory and device
+CPU only:
+Initializes transfer
+Gets interrupt after completion
+
+👉 Used in:
+
+Disk controllers
+Graphics cards
+Network cards
+🔷 DMA Controller
+Special hardware that manages DMA operations
+CPU provides:
+Memory address
+Block size
+
+🔷 Diagram->see in the pdf
+
+🔹 Important Signals (from your diagram)
+📌 Bus Request (BR)
+Sent by DMA to CPU
+Requests control of system bus
+📌 Bus Grant (BG)
+Sent by CPU to DMA
+CPU gives control of bus
+CPU goes into high impedance state (disconnects from bus)
+
+🔹 Diagram Explanation (Your Image)
+
+👉 In the diagram:
+
+BR (Bus Request) → DMA asks CPU for bus
+BG (Bus Grant) → CPU allows DMA to use bus
+ABUS (Address Bus) → carries memory address
+DBUS (Data Bus) → carries data
+RD (Read) → read signal
+WR (Write) → write signal
+
+👉 Once BG is given:
+
+DMA directly communicates with memory
+CPU remains idle or does other tasks
+
+🔹 DMA Transfer Mode
+✔ Burst Transfer
+DMA transfers entire block at once
+CPU is halted during transfer
+After completion → DMA releases bus
+
+🔹 Conclusion
+Programmed I/O → simple but slow
+Interrupt I/O → better CPU utilization
+DMA → fastest, high-performance method
+
+🔹 Block Diagram of DMA->see in the pdf

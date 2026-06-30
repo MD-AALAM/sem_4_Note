@@ -1,0 +1,10 @@
+-> a construcor is a special method in a class is used to create and initialize
+an object of a class.
+-> constructor is invoke automatically when an object of a class is created
+->the main purpose of a constructor is to initialize or assign values to the
+data members of that class
+-> it cannot return any values other than any None
+
+->two types of constructor 
+1.parametrize constructor
+2.non parametrize/default constructor

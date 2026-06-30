@@ -1,0 +1,232 @@
+1️⃣ Signed Number Representation
+
+In digital systems, numbers can be:
+
+Unsigned → Only positive
+
+Signed → Positive and Negative
+
+Since computers use binary, we must decide:
+👉 How do we represent negative numbers in binary?
+
+There are three main methods:
+
+(a) Sign-Magnitude Representation
+
+MSB (Most Significant Bit) is used as sign bit
+
+0 → Positive
+
+1 → Negative
+
+Remaining bits represent magnitude
+
+Example (8-bit system):
+
++5 → 00000101
+-5 → 10000101
+
+❌ Problems:
+
+Two representations of zero:
+
++0 → 00000000
+
+-0 → 10000000
+
+Arithmetic becomes complex.
+
+Because of these problems, this method is rarely used in modern systems.
+
+(b) 1’s Complement Representation
+
+Negative number is obtained by inverting all bits of the positive number.
+
+Example (8-bit):
+
++5 → 00000101
+-5 → 11111010 (all bits inverted)
+
+❌ Problems:
+
+Still two zeros:
+
++0 → 00000000
+
+-0 → 11111111
+
+End-around carry problem in addition
+
+(c) 2’s Complement Representation (Most Important)
+
+This is the standard method used in modern computers.
+
+To find negative number:
+
+Take 1’s complement
+
+Add 1
+
+Example:
+
++5 → 00000101
+1’s complement → 11111010
+Add 1 → 11111011
+
+So -5 = 11111011
+
+✅ Advantages:
+
+Only one zero
+
+Easy arithmetic
+
+Hardware implementation is simple
+
+Used in all modern processors
+
+👉 In exams, if nothing is specified, assume 2’s complement.
+
+2️⃣ Fixed Point Representation
+
+In fixed-point representation:
+
+Decimal point position is fixed.
+
+Used for representing real numbers.
+
+Example (Assume 4 bits for integer, 4 bits for fraction):
+
+Binary: 1011.0110
+
+Here:
+
+1011 → Integer part
+
+0110 → Fraction part
+
+Characteristics:
+
+Simple hardware
+
+Faster computation
+
+Limited range
+
+Precision is fixed
+
+👉 Used in embedded systems and DSP where speed is important.
+
+3️⃣ Floating Point Representation
+
+To represent very large or very small numbers, fixed-point is not enough.
+
+So we use scientific notation.
+
+Example in decimal:
+
+1234.5 = 1.2345 × 10³
+
+In binary:
+
+1011.01 = 1.01101 × 2³
+
+Floating-point has 3 parts:
+
+Sign bit
+
+Exponent
+
+Mantissa (Significand)
+
+Most computers follow the standard defined by
+👉 Institute of Electrical and Electronics Engineers
+
+Standard name:
+👉 IEEE 754
+
+IEEE 754 Standard
+Single Precision (32-bit)
+
+1 bit → Sign
+
+8 bits → Exponent
+
+23 bits → Mantissa
+
+Double Precision (64-bit)
+
+1 bit → Sign
+
+11 bits → Exponent
+
+52 bits → Mantissa
+
+Advantages:
+
+✔ Very large range
+✔ High precision
+✔ Used in scientific computation
+
+Disadvantages:
+
+❌ Complex hardware
+❌ Rounding errors possible
+
+4️⃣ Character Representation
+
+Computers also need to store:
+
+Letters (A, B, C)
+
+Numbers (0–9)
+
+Symbols (@, #, %)
+
+Since computer understands only binary, characters are assigned numeric codes.
+
+(a) ASCII Code
+
+Full name:
+👉 ASCII
+
+7-bit code
+
+128 characters
+
+Example:
+
+'A' → 65
+
+'a' → 97
+
+'0' → 48
+
+Example:
+'A' in binary → 01000001
+
+(b) Extended ASCII
+
+8-bit
+
+256 characters
+
+(c) Unicode
+
+Problem: ASCII supports only English characters.
+
+Solution:
+👉 Unicode
+
+Supports almost all world languages
+
+Hindi, Arabic, Chinese, etc.
+
+Used in modern systems
+
+Common encoding:
+👉 UTF-8
+
+Variable length encoding
+
+Backward compatible with ASCII

@@ -1,0 +1,112 @@
+📘 Memory Classification
+
+Computer memory is broadly classified into two main categories:
+
+1️⃣ RAM (Random Access Memory)
+2️⃣ ROM (Read Only Memory)
+🟢 1️⃣ RAM (Random Access Memory)
+
+RAM is a volatile memory, which means:
+
+Data is lost when power is turned OFF.
+
+It is used for temporary storage.
+
+CPU directly accesses RAM during program execution.
+
+It is faster than ROM.
+
+RAM is further classified into three types:
+
+🔹 (a) Static RAM (SRAM)
+
+Uses flip-flop circuits to store each bit.
+
+Does NOT require refreshing.
+
+Very fast.
+
+Expensive.
+
+Used in cache memory.
+
+Characteristics:
+
+✔ High speed
+✔ No refresh needed
+❌ Costly
+❌ Lower storage capacity
+
+🔹 (b) Dynamic RAM (DRAM)
+
+Uses capacitors to store data.
+
+Requires periodic refreshing.
+
+Slower than SRAM.
+
+Cheaper.
+
+Used as main memory.
+
+Characteristics:
+
+✔ Large storage capacity
+✔ Low cost
+❌ Needs refresh
+❌ Slightly slower
+
+🔹 (c) Non-Volatile RAM (NVRAM)
+
+Retains data even when power is OFF.
+
+Uses battery backup or special technology.
+
+Example:
+
+CMOS memory in motherboards
+
+🔵 2️⃣ ROM (Read Only Memory)
+
+
+
+ROM is a non-volatile memory, meaning:
+
+Data is not lost when power is OFF.
+
+Used to store permanent instructions.
+
+Stores firmware like BIOS.
+
+ROM is classified into:
+
+🔹 (a) PROM (Programmable ROM)
+
+Can be programmed only once.
+
+Cannot be erased or modified afterward.
+
+✔ One-time programmable
+
+🔹 (b) EPROM (Erasable Programmable ROM)
+
+Can be erased using ultraviolet (UV) light.
+
+Can be reprogrammed.
+
+✔ Reprogrammable
+❌ Requires UV light
+
+🔹 (c) EEPROM (Electrically Erasable Programmable ROM)
+
+Can be erased electrically.
+
+Easy to reprogram.
+
+Flash memory is an advanced form of EEPROM.
+
+Examples:
+
+✔ USB drives
+✔ SSD
+✔ Memory cards

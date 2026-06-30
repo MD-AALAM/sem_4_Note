@@ -1,0 +1,52 @@
+Instruction Set Completeness
+
+Instruction Set Completeness means that a computer’s instruction set is powerful enough to perform any computation or program, using a finite sequence of instructions.
+
+In simple words:
+👉 The CPU has all the necessary types of instructions to execute any task.
+
+✅ Conditions for Instruction Set Completeness
+
+An instruction set is considered complete if it can do these three basic functions:
+
+1️⃣ Data Transfer Instructions
+
+Move data between memory and registers.
+
+Examples:
+
+LOAD
+
+STORE
+
+MOV
+
+📌 Without data movement, computation is impossible.
+
+2️⃣ Arithmetic and Logical Instructions
+
+Perform calculations and logical operations.
+
+Examples:
+
+Arithmetic: ADD, SUB, MUL, DIV
+
+Logical: AND, OR, NOT, XOR
+
+📌 These instructions do the actual processing.
+
+3️⃣ Program Control Instructions
+
+Control the flow of execution.
+
+Examples:
+
+JUMP
+
+BRANCH
+
+CALL
+
+RETURN
+
+📌 Needed for loops, conditions, and decision making.

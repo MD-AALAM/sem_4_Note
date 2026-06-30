@@ -1,0 +1,5 @@
+->in python,map filter and reduce functions are bult in 
+functions that allow you to apply a functions
+to a sequence of elements and return a new sequence.
+this function are known as higher order functions,as they
+take other function as arguments

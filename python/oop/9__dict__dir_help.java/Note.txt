@@ -1,0 +1,37 @@
+✅ What is dir()?
+
+->dir() is a built-in function that shows all the properties and methods of an object.
+
+It tells:
+
+->What attributes are inside an object
+
+->What methods you can use with that object
+
+
+✅ What is __dict__?
+
+__dict__ is a special attribute that stores all the instance variables of an object in dictionary form.
+
+It shows only the actual data stored in the object.
+
+
+✅ What is help()?
+
+help() is used to get documentation of:
+
+functions
+
+classes
+
+modules
+
+methods
+
+It shows:
+
+what it does
+
+parameters
+
+description

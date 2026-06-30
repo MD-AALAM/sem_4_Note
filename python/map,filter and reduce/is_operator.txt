@@ -1,0 +1,6 @@
+(1)->is operator memory location ko campare karta hai
+isme agar same type aur same value ho to python ekhi memory
+me store karta hai value ko
+
+(2)->== ye operator sirf value ko campare karta hai
+agar true huwa to return true otherwise false

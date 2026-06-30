@@ -1,0 +1,23 @@
+🔷 1️⃣ What are Magic (Dunder) Methods?
+
+Magic methods are special methods in Python that start and end with double underscores.
+
+They are also called:
+
+-Dunder methods (Double UNDERscore)
+
+-Special methods
+
+Example:
+__init__
+__str__
+__len__
+__add__
+
+🔷 2️⃣ Why are they called "Magic"?
+
+They are called magic because:
+
+👉 Python automatically calls them in the background.
+
+You do not call them directly in normal situations.
