@@ -1,0 +1,110 @@
+🔒 Deadlock in Operating System
+📌 Definition
+
+Deadlock is a situation in an operating system where a set of processes are permanently blocked because each process is waiting for a resource that is held by another process in the set.
+
+👉 In simple words:
+
+“Process A waits for Process B, and Process B waits for Process A — and none of them can proceed.”
+
+📌 Real Life Example (Very Important for Understanding)
+
+Imagine:
+
+Person 1 has a pen and needs a notebook.
+
+Person 2 has a notebook and needs a pen.
+
+Both are waiting for each other.
+
+👉 This is called Deadlock.
+
+🔹 Formal Definition (Write in Exam)
+
+A deadlock is a condition in which a set of processes are blocked because each process holds at least one resource and is waiting to acquire additional resources held by other processes.
+
+🔹 Necessary Conditions of Deadlock
+
+According to Edward G. Coffman Jr., there are four necessary conditions for deadlock.
+These are called Coffman Conditions.
+
+All four must occur simultaneously for deadlock to happen.
+
+1️⃣ Mutual Exclusion
+
+At least one resource must be non-sharable.
+
+Only one process can use it at a time.
+
+Example: Printer
+
+2️⃣ Hold and Wait
+
+A process is holding at least one resource
+
+And waiting for additional resources
+
+3️⃣ No Preemption
+
+Resources cannot be forcibly taken.
+
+A process must release resources voluntarily.
+
+4️⃣ Circular Wait
+
+A circular chain of processes exists.
+
+Each process is waiting for a resource held by the next process.
+
+Example:
+
+P1 → waits for P2
+P2 → waits for P3
+P3 → waits for P1
+
+This forms a cycle 🔁
+
+
+
+🔹 Methods to Handle Deadlock
+
+->There are 4 approaches:
+
+1️⃣ Deadlock Prevention
+
+Break one of the four conditions.
+
+Example:
+
+Allow preemption
+
+Avoid circular wait
+
+
+2️⃣ Deadlock Avoidance
+
+System checks before allocating resources.
+
+It avoids unsafe states.
+
+Most famous algorithm:
+👉 Banker’s Algorithm
+
+
+
+3️⃣ Deadlock Detection
+
+Allow deadlock to occur.
+
+Then detect it using an algorithm.
+
+Recover after detection.
+
+
+4️⃣ Deadlock Recovery
+
+After detection:
+
+Terminate processes
+
+Or preempt resources
