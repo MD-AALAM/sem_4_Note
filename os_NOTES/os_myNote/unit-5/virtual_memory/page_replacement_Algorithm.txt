@@ -1,0 +1,107 @@
+These are important Page Replacement Algorithms used in Operating Systems (Memory Management). When main memory is full and a new page must be loaded, the OS must replace one existing page. The rule used to select that page is called a Page Replacement Algorithm.
+
+Page Replacement Algorithms
+1. Optimal Page Replacement (OPT)
+
+Definition:
+The Optimal algorithm replaces the page that will not be used for the longest time in the future.
+
+Idea:
+Look into the future references and remove the page that will be used last.
+
+Advantages
+
+Produces the minimum number of page faults.
+
+Used as a benchmark to compare other algorithms.
+
+Disadvantages
+
+Not practical because the future reference string is unknown.
+
+Example Idea
+If pages are:
+7 0 1 2 0 3 0 4
+
+The algorithm removes the page whose next use is farthest in the future.
+
+2. First In First Out (FIFO)
+
+Definition:
+
+First In First Out (FIFO) is a page replacement algorithm in which the page that entered memory first is replaced first when a page fault occurs.
+
+Idea:
+Pages are treated like a queue.
+
+The first page loaded into memory is the first one removed.
+
+Advantages
+
+Very simple to implement.
+
+Disadvantages
+
+May remove frequently used pages.
+
+Can cause Belady’s Anomaly (more frames → more page faults).
+
+3. Second Chance (SC)
+
+Definition:
+Second Chance is an improved version of FIFO that gives pages a second chance before replacing them.
+
+Idea
+
+Each page has a reference bit (R).
+
+When replacing a page:
+
+If R = 0 → replace the page.
+
+If R = 1 → set R = 0 and move the page to the back of the queue.
+
+Advantage
+
+Better than FIFO because recently used pages are protected.
+
+4. Not Recently Used (NRU)
+
+Definition:
+NRU replaces a page that has not been used recently.
+
+It uses two bits:
+
+R bit (Referenced)
+
+M bit (Modified)
+
+Pages are divided into four classes:
+
+Class	R	M	Meaning
+0	0	0	Not used recently, not modified
+1	0	1	Not used recently but modified
+2	1	0	Used recently
+3	1	1	Used recently and modified
+
+The OS replaces a page from the lowest class number first.
+
+5. Least Recently Used (LRU)
+
+Definition:
+LRU replaces the page that has not been used for the longest time in the past.
+
+Idea:
+The page that was used least recently is removed.
+
+Advantages
+
+Good performance.
+
+Close to the Optimal algorithm.
+
+Disadvantages
+
+Implementation is complex.
+
+Requires tracking recent usage.

@@ -1,0 +1,22 @@
+CPU Scheduling (Operating System)
+1. Introduction
+
+In a multiprogramming operating system, multiple processes reside in main memory at the same time. However, only one process can occupy the CPU at any given instant.
+The responsibility of deciding which process will get the CPU next lies with the CPU Scheduler.
+This decision-making mechanism is known as CPU Scheduling.
+
+👉 Definition:
+CPU Scheduling is the process of selecting one process from the ready queue to allocate the CPU.
+
+
+
+6. CPU Scheduling Criteria (Very Important for Exams)
+->To evaluate and compare different CPU scheduling algorithms, certain performance criteria are used. A good CPU scheduling algorithm should optimize these criteria.
+
+
+Criteria	Meaning
+CPU Utilization	->Keep CPU as busy as possible
+Throughput	->Number of processes completed per unit time
+Turnaround Time	->Completion time − Arrival time
+Waiting Time	->Turnaround time − Burst time
+Response Time	->Time from request submission to first response

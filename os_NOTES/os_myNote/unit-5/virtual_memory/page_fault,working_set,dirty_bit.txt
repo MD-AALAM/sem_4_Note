@@ -1,0 +1,82 @@
+1. Page Fault
+
+A Page Fault occurs when a program tries to access a page that is not currently in the main memory (RAM).
+
+How it happens
+
+The CPU generates a virtual address.
+
+The page table is checked to see if the page is in RAM.
+
+If the page is not present, a page fault interrupt occurs.
+
+The operating system:
+
+Finds the required page on the disk (secondary storage).
+
+Loads it into RAM.
+
+Updates the page table.
+
+The instruction is executed again.
+
+Types of Page Faults
+
+Minor Page Fault – Page is in memory but not mapped.
+
+Major Page Fault – Page must be loaded from disk (slow).
+
+Key Point
+
+Page faults slow down performance because accessing disk is much slower than accessing RAM.
+
+2. Working Set
+
+The Working Set is the set of pages currently being used by a process during a specific time period.
+
+Explanation
+
+A program does not use all its pages at the same time.
+
+It usually uses a small group of pages repeatedly.
+
+This group is called the Working Set.
+
+Purpose
+
+The working set helps the operating system:
+
+Decide how many pages a process needs in RAM.
+
+Prevent thrashing (excessive page swapping).
+
+Example
+
+If a program has 100 pages, it may only actively use 10–15 pages at a time.
+These active pages form the working set.
+
+3. Dirty Page / Dirty Bit
+
+A Dirty Page is a page in memory that has been modified by the process.
+
+Dirty Bit
+
+Each page table entry contains a Dirty Bit.
+
+Dirty Bit = 0 → Page has not been modified.
+
+Dirty Bit = 1 → Page has been modified.
+
+Why it is Important
+
+When a page must be removed from memory:
+
+If Dirty Bit = 0
+→ The page is discarded (no need to save).
+
+If Dirty Bit = 1
+→ The page must be written back to disk before removal.
+
+Benefit
+
+This mechanism reduces unnecessary disk writes and improves performance.ss

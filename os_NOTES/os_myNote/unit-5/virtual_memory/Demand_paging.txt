@@ -1,0 +1,55 @@
+1. What is Demand Paging?
+
+Demand Paging is a virtual memory technique where a page is loaded into main memory (RAM) only when it is needed.
+
+Pages stay in secondary storage (disk) until they are required.
+
+If the CPU tries to access a page that is not in memory, a page fault occurs.
+
+2. Performance of Demand Paging
+
+The performance mainly depends on the Page Fault Rate.
+
+When a page fault occurs, the system must:
+
+Detect the page fault
+
+Save the current process state
+
+Find the required page on disk
+
+Load the page into RAM
+
+Update the page table
+
+Restart the instruction
+
+This process takes much more time than normal memory access.
+
+3. Effective Access Time (EAT)
+
+To measure performance, we use Effective Access Time.
+
+EAT = (1 - p) \times ma + p \times page\ fault\ time
+
+Where:
+
+EAT = Effective Access Time
+
+p = Page fault rate (probability of page fault)
+
+ma = Memory access time
+
+page fault time = Time required to service a page fault
+
+4. Example
+
+Assume:
+
+Memory Access Time = 200 ns
+
+Page Fault Service Time = 8 ms
+
+Page Fault Rate = 0.001
+
+Then the effective access time increases greatly, showing that even a small page fault rate reduces system performance.

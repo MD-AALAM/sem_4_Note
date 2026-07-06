@@ -1,0 +1,9 @@
+🧠 Concept Logic
+
+We use:
+
+mutex → Protects readcount variable
+
+wrt → Controls access to shared resource
+
+readcount → Number of active readers

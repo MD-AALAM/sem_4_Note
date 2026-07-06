@@ -1,0 +1,22 @@
+Address Translation in Contiguous Allocation
+
+(Operating System – Memory Management)
+
+1. Introduction
+
+In an operating system, a program does not access physical memory directly.
+Instead, the program generates a logical address (also called a virtual address).
+
+The Operating System and hardware together translate this logical address into a physical address in RAM. This process is called:
+
+Address Translation
+
+
+4. Address Translation Formula
+
+The physical address is calculated as:
+
+Physical Address = Base Register + Logical Address
+
+
+Note->figure dekh ke padhna 

@@ -1,0 +1,124 @@
+Process Control Block (PCB)
+#)Introduction
+
+->In an operating system, multiple processes are executed concurrently. To manage and control these processes efficiently, the operating system maintains a data structure known as the Process Control Block (PCB).
+The PCB acts as a process descriptor that stores all the information related to a particular process.
+
+👉 In simple words:
+PCB is a record maintained by the OS for every process.
+
+
+#)Need for PCB
+
+The operating system requires PCB for:
+
+Process scheduling
+
+Context switching
+
+Resource allocation
+
+Process synchronization
+
+Process termination and resumption
+
+->Without PCB, the OS cannot keep track of processes.
+
+#)Contents of PCB
+
+A PCB typically contains the following fields:
+
+1. Process Identification Information
+
+Process ID (PID): Unique identifier for each process
+
+Parent Process ID: ID of the process that created it
+
+2. Process State
+
+Indicates the current state of the process:
+
+New
+
+Ready
+
+Running
+
+Waiting (Blocked)
+
+Terminated
+
+3. Program Counter
+
+Stores the address of the next instruction to be executed when the process resumes.
+
+4. CPU Registers
+
+Includes general-purpose registers, stack pointer, instruction register, etc.
+
+Necessary to restore the process during context switching.
+
+5. CPU Scheduling Information
+
+Priority of the process
+
+Scheduling queue pointers
+
+Time slice (for time-sharing systems)
+
+6. Memory Management Information
+
+Base and limit registers
+
+Page table or segment table pointers
+
+Information about allocated memory
+
+7. I/O Status Information
+
+List of I/O devices allocated to the process
+
+List of open files
+
+8. Accounting Information
+
+CPU usage time
+
+Process execution time
+
+User ID, job ID
+
+#)Role of PCB in Context Switching
+
+When a context switch occurs:
+
+The state of the currently running process is saved in its PCB.
+
+The PCB of the next scheduled process is loaded.
+
+The CPU resumes execution using the information stored in the PCB.
+
+👉 Therefore, PCB is the backbone of context switching.
+
+#)Lifecycle of PCB
+
+A PCB is created when a process is created.
+
+It is updated as the process executes.
+
+It is deleted when the process terminates.
+
+Diagram (for exam)
+
+You can draw a simple box diagram in exams:
+
+-------------------------
+| Process ID           |
+| Process State        |
+| Program Counter      |
+| CPU Registers        |
+| Scheduling Info      |
+| Memory Info          |
+| I/O Info             |
+| Accounting Info      |
+-------------------------

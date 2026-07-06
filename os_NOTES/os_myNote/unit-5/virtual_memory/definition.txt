@@ -1,0 +1,70 @@
+1. Definition of Virtual Memory
+
+Virtual Memory is a memory management technique in which the operating system uses part of the secondary storage (hard disk/SSD) as if it were main memory (RAM).
+
+👉 In simple words:
+Virtual memory creates an illusion that the system has more RAM than actually available.
+
+2. Why Virtual Memory is Needed
+
+RAM is limited and expensive. When many programs run at the same time, RAM may not be sufficient.
+
+Virtual memory solves this problem by:
+
+Allowing large programs to run even if RAM is small
+
+Running multiple programs simultaneously
+
+Improving CPU utilization
+
+3. How Virtual Memory Works
+
+Virtual memory works using paging.
+
+Steps:
+
+The program is divided into pages.
+
+RAM is divided into frames.
+
+Only the required pages are loaded into RAM.
+
+The remaining pages stay in secondary memory (disk).
+
+When a page is needed but not in RAM, a page fault occurs and the OS loads it from disk.
+
+4. Example
+
+Suppose:
+
+Program size = 8 GB
+
+RAM available = 4 GB
+
+Without virtual memory → Program cannot run. ❌
+
+With virtual memory →
+
+Some pages stay in RAM
+
+Other pages stay in disk
+
+So the program runs successfully. ✅
+
+5. Advantages of Virtual Memory
+
+Allows execution of large programs.
+
+Better memory utilization.
+
+Supports multiprogramming.
+
+Improves system efficiency.
+
+6. Disadvantages of Virtual Memory
+
+Page fault increases execution time.
+
+Disk access is slower than RAM.
+
+If page faults occur frequently → system performance decreases (Thrashing).

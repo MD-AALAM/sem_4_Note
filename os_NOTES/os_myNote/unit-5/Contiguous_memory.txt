@@ -1,0 +1,132 @@
+🔹 Definition
+
+Contiguous memory allocation is a memory management technique in which each process is allocated a single continuous block of memory.
+
+That means:
+
+If a process needs 100 KB, OS gives one continuous 100 KB block in RAM.
+🎯 Why is it Called “Contiguous”?
+
+Because:
+
+All memory locations allocated to a process are adjacent (next to each other).
+
+Example:
+
+| P1 | P1 | P1 | P1 | P2 | P2 | Free | Free |
+
+
+Here:
+
+P1 occupies continuous space
+
+P2 occupies continuous space
+
+No gaps inside process memory.
+
+
+
+🔹 Types of Contiguous Allocation
+
+There are two main types:
+
+1️⃣ Fixed Partition Allocation
+
+Memory is divided into fixed-size partitions(Block).
+
+Each partition holds only one process.
+
+📌 Characteristics:
+
+Partition size is predefined.
+
+Number of processes limited by number of partitions.
+
+Internal fragmentation occurs.
+
+📌 Problem:
+
+If partition size = 100 KB
+Process needs = 60 KB
+
+Remaining 40 KB → wasted
+This is Internal Fragmentation.
+
+2️⃣ Variable Partition Allocation
+
+Memory partitions are created dynamically.
+
+Partition size depends on process requirement.
+
+📌 Advantage:
+
+Less internal fragmentation.
+
+📌 Problem:
+
+Creates External Fragmentation.
+
+Example:
+
+| P1 | Free | P2 | Free | P3 |
+
+
+Total free memory may be enough,
+but not in one continuous block.
+
+🔹 Allocation Strategies (Very Important for Exam)
+
+When OS finds free space, it uses:
+
+1️⃣ First Fit
+
+Allocates first available block large enough.
+
+✔ Fast
+❌ May create fragmentation early
+
+2️⃣ Best Fit
+
+Allocates smallest block that fits the process.
+
+✔ Reduces leftover space
+❌ Slow (search entire memory)
+
+3️⃣ Worst Fit
+
+Allocates largest available block.
+
+✔ Leaves large free blocks
+❌ Not very efficient
+
+🔹 Advantages of Contiguous Allocation
+
+✔ Simple to implement
+✔ Easy address translation
+✔ Less overhead
+
+🔹 Disadvantages
+
+❌ External Fragmentation
+❌ Difficult memory compaction
+❌ Process size limited by largest free block
+
+🔹 Compaction
+
+To solve external fragmentation:
+
+OS shifts processes to combine free space into one large block.
+
+But compaction is:
+
+Time consuming
+
+Expensive
+
+📌 Logical to Physical Address
+
+In contiguous allocation:
+
+Physical Address = Base Register + Logical Address
+
+Very simple mapping.

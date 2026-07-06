@@ -1,0 +1,49 @@
+Solution to Slow Address Translation: Translation Lookaside Buffer (TLB)
+
+To solve the problem of slow address translation in paging, operating systems use a special hardware device called the Translation Lookaside Buffer (TLB).
+
+1. What is TLB?
+
+The Translation Lookaside Buffer (TLB) is a small, fast cache memory that stores recently used page table entries.
+
+It is located inside the CPU or very close to it, so it can be accessed much faster than main memory.
+
+2. How TLB Works
+
+When the CPU generates a logical address, the system follows these steps:
+
+The page number is first searched in the TLB.
+
+If the page number is found in TLB (TLB Hit):
+
+The frame number is obtained directly from the TLB.
+
+The system accesses the main memory only once to get the data.
+
+If the page number is not found in TLB (TLB Miss):
+
+The system checks the page table in main memory.
+
+The frame number is obtained.
+
+The entry is then stored in the TLB for future use.
+
+Finally, the data is accessed from main memory.
+
+3. Advantage of TLB
+
+The main advantage of TLB is that it reduces memory access time.
+
+Without TLB:
+
+Memory access = 2 times
+
+Page table access
+
+Actual memory access
+
+With TLB (Hit):
+
+Memory access = 1 time only
+
+This improves the performance and speed of the system

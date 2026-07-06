@@ -1,0 +1,5 @@
+Paging
+
+In paging, a process is divided into small fixed-size blocks, and these blocks are placed anywhere in physical memory.
+
+So the process does not need a single continuous memory block.

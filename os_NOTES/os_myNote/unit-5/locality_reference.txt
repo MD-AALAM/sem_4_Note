@@ -1,0 +1,61 @@
+🔹 Definition
+
+Locality of Reference means:
+
+->During the execution of a program, the CPU tends to access a small set of memory locations repeatedly within a short period of time.
+	In simple words:
+->A program does not access all memory randomly.
+It mostly uses nearby or recently used memory locations.
+
+This behavior is called locality.
+
+🎯 Why Locality is Important?
+
+Locality of reference is the main reason why cache memory and virtual memory work efficiently.
+
+Without locality:
+
+Cache memory would be useless.
+
+Page replacement algorithms would fail.
+
+Performance would decrease drastically.
+
+
+🔹 Types of Locality of Reference
+
+There are two main types:
+
+1️⃣ Temporal Locality (Time-based Locality)
+📌 Meaning:
+
+If a memory location is accessed now, it is likely to be accessed again soon.
+
+📌 Example:
+for(i = 0; i < 10; i++) {
+    sum = sum + arr[i];
+}
+
+Here:
+
+Variable i is used repeatedly.
+
+Variable sum is used repeatedly.
+
+So these memory locations are accessed again and again → Temporal Locality.
+
+
+2️⃣ Spatial Locality (Space-based Locality)
+📌 Meaning:
+
+If a memory location is accessed, nearby memory locations are likely to be accessed soon.
+
+📌 Example:
+arr[0], arr[1], arr[2], arr[3]
+
+
+Arrays are stored in contiguous memory locations.
+
+If arr[0] is accessed, there is a high chance that arr[1] will be accessed next.
+
+That is Spatial Locality.

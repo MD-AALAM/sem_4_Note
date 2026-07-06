@@ -1,0 +1,70 @@
+
+Prevention → Break one deadlock condition permanently
+Avoidance → Carefully decide each request so that deadlock never happens
+
+
+
+2️⃣ Basic Idea of Deadlock Avoidance
+
+The main concept is:
+
+🔹 The system must always remain in a Safe State
+
+3️⃣ Safe State
+
+A system is in a Safe State if:
+
+There exists at least one sequence of processes (called Safe Sequence) such that all processes can finish execution without deadlock.
+
+Safe Sequence
+
+If processes can execute one by one and release resources in such a way that all complete successfully → Safe.
+
+If no such sequence exists → Unsafe State.
+
+⚠ Important:
+
+Unsafe state ≠ Deadlock
+
+But unsafe state may lead to deadlock
+
+
+5️⃣ Algorithms Used in Deadlock Avoidance
+
+There are mainly two algorithms:
+
+1️⃣ Banker’s Algorithm (Most Important)
+
+Proposed by: Edsger W. Dijkstra
+
+This algorithm works like a bank system:
+
+Customers = Processes
+
+Loan = Resources
+
+Banker ensures he never gives loans that cause bankruptcy
+
+Similarly, OS ensures that allocating resources will not lead to unsafe state.
+
+Banker’s Algorithm Uses:
+
+Available Matrix
+
+Maximum Matrix
+
+Allocation Matrix
+
+Need Matrix
+
+Need = Maximum − Allocation
+
+Before granting a request:
+
+Pretend allocation is done
+
+Check if system remains safe
+
+If safe → Grant request
+
+If unsafe → Deny request

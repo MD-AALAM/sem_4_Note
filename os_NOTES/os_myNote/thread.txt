@@ -1,0 +1,70 @@
+A thread is the smallest unit of CPU execution inside a process. It is sometimes called a lightweight process because threads share the resources of the same process.
+
+A process can have one thread or multiple threads working simultaneously.
+
+(*)Simple Meaning
+Process = Running program
+Thread = Smaller task inside the process
+
+Example: In a web browser:
+
+One thread handles the user interface
+One thread loads webpages
+One thread plays video/audio
+
+Features of Threads
+
+Threads share:
+Code section
+Data / memory
+Files and resources
+Each thread has its own:
+Program counter
+Registers
+Stack
+
+5. Types of Threads
+
+Threads are mainly classified into two types:
+
+5.1 User-Level Threads (ULT)
+
+Managed by user-level libraries
+
+OS is not aware of these threads
+
+Faster to create and manage
+
+Advantages:
+
+Low overhead
+
+No kernel involvement
+
+Disadvantages:
+
+If one thread blocks, entire process blocks
+
+Cannot utilize multiple CPUs effectively
+
+📌 Example: POSIX threads (pthreads) at user level
+
+5.2 Kernel-Level Threads (KLT)
+
+Managed directly by the Operating System
+
+OS schedules threads individually
+
+Advantages:
+
+True parallelism
+
+Better CPU utilization
+
+Disadvantages:
+
+Higher overhead
+
+Slower than ULT
+
+📌 Example: Threads in Linux, Windows

@@ -1,0 +1,73 @@
+✅ What is Process Synchronization?
+
+->Process Synchronization is a technique used in Operating Systems to coordinate multiple processes so that they can share resources safely without causing errors.
+
+When two or more processes execute concurrently and access shared data, problems may occur. Synchronization prevents those problems.
+
+🧠 1️⃣ Why Do We Need Process Synchronization?
+
+->In a multiprogramming system, multiple processes execute concurrently.
+
+When multiple processes:
+
+Share same memory
+
+Share same file
+
+Share same variable
+
+Share same resource
+
+There is a danger of incorrect results.
+
+That is where synchronization becomes necessary.
+
+🔥 2️⃣ Race Condition (Core Concept)
+📌 Definition:
+
+->A Race Condition occurs when:
+
+Two or more processes access and manipulate shared data concurrently,
+and the final outcome depends on the order of execution.
+
+Meaning:
+
+⚠ The result depends on "who runs first".
+
+🎓 Example (Very Important)
+
+Suppose we have a shared variable:
+
+int count = 5;
+
+
+Two processes execute:
+
+count = count + 1;
+
+
+Now internally this statement is NOT atomic.
+It happens in 3 steps:
+
+1️⃣ Read count
+2️⃣ Add 1
+3️⃣ Write back
+
+🚨 Suppose:
+
+Initial value: count = 5
+
+Process P1 reads → 5
+Process P2 reads → 5
+
+P1 writes → 6
+P2 writes → 6
+
+Final result = 6 ❌
+Correct result should be = 7 ✅
+
+This is called:
+
+⚠ Race Condition
+
+Because both processes were racing to update the value.

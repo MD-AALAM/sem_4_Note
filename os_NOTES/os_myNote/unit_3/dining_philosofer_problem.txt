@@ -1,0 +1,3 @@
+✍ Short Version (If 5 Marks Question)
+
+The Dining Philosopher Problem is a synchronization problem in which five philosophers sit around a circular table with one fork between each pair. Each philosopher needs two forks (left and right) to eat. Since each fork can be used by only one philosopher at a time, improper resource allocation may lead to deadlock if all philosophers pick up one fork and wait for the other simultaneously.

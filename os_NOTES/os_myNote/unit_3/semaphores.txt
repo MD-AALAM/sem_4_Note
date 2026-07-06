@@ -1,0 +1,33 @@
+2️⃣ What is a Semaphore?
+
+A Semaphore is a synchronization variable used to control access to shared resources.
+
+It is basically an integer variable that is accessed only through two operations:
+
+wait() → also called P()
+
+signal() → also called V()
+
+3️⃣ Two Operations of Semaphore
+🔹 wait(S)
+
+Decreases the value of semaphore by 1.
+
+If value becomes negative, the process is blocked (waits).
+
+wait(S) {
+   S = S - 1;
+   if (S < 0)
+      block the process;
+}
+🔹 signal(S)
+
+Increases the value of semaphore by 1.
+
+If there are blocked processes, one is awakened.
+
+signal(S) {
+   S = S + 1;
+   if (S <= 0)
+      wake up a waiting process;
+}
